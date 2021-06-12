@@ -1,84 +1,52 @@
 import React from 'react'
-import { Row, Col, Container, Image, Button } from 'react-bootstrap'
+import { Container } from 'react-bootstrap'
 import NavBar from '../../components/NavBar/NavBar';
 import productPic from '../../images/shoeImg.jpeg';
+import product2 from '../../images/product2.jpeg';
+import product3 from '../../images/product3.jpeg';
 import Footer from '../../components/Footer/Footer';
+import WishlistCard from '../../components/WishlistCard/WishlistCard';
 import './WishList.css'
 
 function WishList() {
 
 
     function handleImageDelete() {
-
+         console.log("hii")
     }
 
     return (
         <>
             <NavBar />
-            <Container style={{ marginTop: 250 }}>
+            <Container style={{ marginTop: 200 }}>
                 <p className="display-1">Wishlist</p>
-                <Row style={{marginTop: 200 }}>
-                    <Col md={{ span: 5, offset: 1 }} className="p-0 image" style={{ backgroundColor: "red" }}>
-                        <Image src={productPic} fluid />
-                        <div
-                            className="delete"
-                            type="button"
-                            onClick={() => handleImageDelete()}
-                        >
-                        <p style={{textAlign: "center"}}>X</p>
-                        </div>
-                    </Col>
-                    <Col md={6}>
-                        <p className="display-3 productName ml-3">Jordan Delta 2</p>
-                        <p className="text-muted ml-4" style={{ fontSize: 34 }}>Nike shoes</p>
-                        <div className="d-flex">
-                        <Button variant="secondary" className="mx-2 mt-2" size="lg" block>Buy Now</Button>
-                        <Button variant="outline-dark" className="mx-2 mt-2" size="lg" block>Add to cart</Button>
-                        </div>
-                    </Col>
-                </Row>
-
-                <Row style={{marginTop: 200, textAlign: "right" }}>
-                    <Col md={5} className="p-0 image order-md-2" style={{ backgroundColor: "red" }}>
-                        <Image src={productPic} fluid />
-                        <div
-                            className="delete"
-                            type="button"
-                            onClick={() => handleImageDelete()}
-                        >
-                        <p style={{textAlign: "center"}}>X</p>
-                        </div>
-                    </Col>
-                    <Col  md={{ span: 6, offset: 1 }} className="order-md-1">
-                        <p className="display-3 productName mr-4">Jordan Delta 2</p>
-                        <p className="text-muted mr-4" style={{ fontSize: 34 }}>Nike shoes</p>
-                        <div className="d-flex">
-                        <Button variant="outline-dark" className="mx-2 mt-2" size="lg" block>Add to cart</Button>
-                        <Button variant="secondary" className="mx-2 mt-2" size="lg" block>Buy Now</Button>
-                        </div>
-                    </Col>
-                </Row>
-
-                <Row style={{marginTop: 200}}>
-                    <Col md={{ span: 5, offset: 1 }} className="p-0 image order-1" style={{ backgroundColor: "red" }}>
-                        <Image src={productPic} fluid />
-                        <div
-                            className="delete"
-                            type="button"
-                            onClick={() => handleImageDelete()}
-                        >
-                        <p style={{textAlign: "center"}}>X</p>
-                        </div>
-                    </Col>
-                    <Col md={6} className="order-2">
-                        <p className="display-3 productName ml-3">Jordan Delta 2</p>
-                        <p className="text-muted ml-4" style={{ fontSize: 34 }}>Nike shoes</p>
-                        <div className="d-flex">
-                        <Button variant="secondary" className="mx-2 mt-2" size="lg" block>Buy Now</Button>
-                        <Button variant="outline-dark" className="mx-2 mt-2" size="lg" block>Add to cart</Button>
-                        </div>
-                    </Col>
-                </Row>
+                <WishlistCard
+                    align="left"
+                    productId={1} 
+                    productPic={productPic}
+                    productName="Jordan Delta 2"
+                    productCompany = "Nike"
+                    price="$29"
+                    handleImageDelete={handleImageDelete}
+                />
+                <WishlistCard 
+                    align="right"
+                    productId={1} 
+                    productPic={product2}
+                    productName="Green shirt"
+                    productCompany = "Levi's"
+                    price="$19"
+                    handleImageDelete={handleImageDelete}
+                />
+                <WishlistCard 
+                    align="left"
+                    productId={1} 
+                    productPic={product3}
+                    productName="Jordan Delta 2"
+                    productCompany = "Nike shoes"
+                    price="$29"
+                    handleImageDelete={handleImageDelete}
+                />
             </Container>
             <Footer />
         </>
