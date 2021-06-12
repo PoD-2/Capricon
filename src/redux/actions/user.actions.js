@@ -16,8 +16,6 @@ function login(user, remember) {
         userService.login(user, remember)
             .then(
                 user => { 
-
-                        dispatch(alertActions.success('Login successful'));
                         dispatch(success(user));
                         history.push('/');
                    
@@ -46,8 +44,6 @@ function register(user, remember) {
         userService.register(user,remember)
             .then(
                 user => { 
-
-                    dispatch(alertActions.success('Registration successful'));
                     dispatch(success(user));
                     history.push('/');
 

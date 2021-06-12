@@ -56,7 +56,8 @@ export default function LoginPage() {
         function() {
          // clear alert after 3 secomds
          dispatch(alertActions.clear());
-        }, 5000);
+        }, 3000);
+
 }, [alertType, dispatch]);
 
   return (

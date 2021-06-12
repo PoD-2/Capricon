@@ -73,7 +73,7 @@ function RegisterPage() {
             function() {
              // clear alert after 3 secomds
              dispatch(alertActions.clear());
-            }, 4000);
+            }, 3000);
 }, [alertType, dispatch]);
 
 

@@ -1,5 +1,5 @@
 // import config from 'config';
-
+const axios = require('axios');
 const baseURL = "http://localhost:8080"
 
 export const userService = {
@@ -8,25 +8,23 @@ export const userService = {
     register
 };
 
-function login(user, remember) {
-    const requestOptions = {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': 'http://localhost:8080', 'Access-Control-Allow-Credentials': 'true'},
-        body: JSON.stringify(user) 
-    };
 
-    return fetch(`${baseURL}/login`, requestOptions)
-        .then(handleResponse)
-        .then(user => {
-            
-            // store user details and jwt token in local storage to keep user logged in between page refreshes
-            if(remember){
-                localStorage.setItem('user', JSON.stringify(user));
-            }   
-                 
-            return user;
-        })
+
+function login(user, remember) {
+  
+    return axios.post(`${baseURL}/login`, user)
+    .then(user => {
+        if(remember) {
+            localStorage.setItem('user', JSON.stringify(user));
+        }
+        return user.data;
+    })
+    .catch(err => {
+        return Promise.reject(err.response.data.message);
+    })
+
 }
+
 
 function logout() {
     // remove user from local storage to log user out
@@ -34,39 +32,19 @@ function logout() {
 }
 
 
-function register(user, remember) {
-    const requestOptions = {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': 'http://localhost:8080', 'Access-Control-Allow-Credentials': 'true' },
-        body: JSON.stringify(user) 
-    };
 
-    return fetch(`${baseURL}/register`, requestOptions)
-        .then(handleResponse)
+function register(user, remember) {
+  
+        return axios.post(`${baseURL}/register`, user)
         .then(user => {
-            if(remember){
+            if(remember) {
                 localStorage.setItem('user', JSON.stringify(user));
             }
-            return user;
+            return user.data;
         })
+        .catch(err => {
+            return Promise.reject(err.response.data.message);
+        })
+        
 }
 
-
-function handleResponse(response) {
-    return response.text().then(text => {
-        const data = text && JSON.parse(text);
-        if (!response.ok) {
-            
-            if (response.status === 401) {
-                // auto logout if 401 response returned from api
-                logout();
-                window.location.reload();
-            }
-
-            const error = (data && data.message) || response.statusText;
-            return Promise.reject(error);
-        }
-
-        return data;
-    });
-}
