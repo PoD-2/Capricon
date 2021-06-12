@@ -4,6 +4,7 @@ import NavBar from '../../components/NavBar/NavBar';
 import productPic from '../../images/shoeImg.jpeg';
 import product2 from '../../images/product2.jpeg';
 import product3 from '../../images/product3.jpeg';
+import product4 from '../../images/product4.jpeg';
 import Footer from '../../components/Footer/Footer';
 import WishlistCard from '../../components/WishlistCard/WishlistCard';
 import './WishList.css'
@@ -42,9 +43,18 @@ function WishList() {
                     align="left"
                     productId={1} 
                     productPic={product3}
-                    productName="Jordan Delta 2"
-                    productCompany = "Nike shoes"
-                    price="$29"
+                    productName="Stainless Steel Watch"
+                    productCompany = "Fossil"
+                    price="$89"
+                    handleImageDelete={handleImageDelete}
+                />
+                <WishlistCard 
+                    align="right"
+                    productId={1} 
+                    productPic={product4}
+                    productName="Sony M3 smart phone"
+                    productCompany = "Sony"
+                    price="$109"
                     handleImageDelete={handleImageDelete}
                 />
             </Container>
