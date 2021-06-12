@@ -6,7 +6,7 @@ import { useSelector } from 'react-redux';
 export default function RouteWrapper({component: Component, isPrivate, alwaysPublic, ...rest}) {
     
     
-    const user = useSelector(state => state.authentication.user);
+    const user = useSelector(state => state.userAuth.user);
 
     const signed = user ? true : false;
 

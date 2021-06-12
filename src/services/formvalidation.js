@@ -2,7 +2,8 @@ export const formValidation = {
     nameValidation,
     mobileNumberValidation,
     emailValidation,
-    passwordValidation
+    passwordValidation,
+    checkForCompanyName
 };
 
 
@@ -39,3 +40,18 @@ function passwordValidation(submitted, password) {
        return true
      }
 }
+
+
+  //get company name from buisness email
+  function checkForCompanyName (buisnessEmail) {
+
+    const popularEmailService = ["gmail", "outlook", "yahoo", "hotmail"];
+    const companyName = buisnessEmail.substring(buisnessEmail.lastIndexOf("@") +1, buisnessEmail.lastIndexOf("."));
+    const checkIfNormalEmail = popularEmailService.includes(companyName);
+    if(checkIfNormalEmail){
+      return " ";
+    } else {
+      return companyName;
+    }
+
+  }

@@ -14,7 +14,7 @@ export default function LoginPage() {
   const [rememberChecked, setRememberChecked] = useState(false);
 
   //redux integration
-  const loggingIn = useSelector(state => state.authentication.loading);
+  const loggingIn = useSelector(state => state.userAuth.loading);
   const message = useSelector(state => state.alert.message);
   const alertType = useSelector(state => state.alert.type);
   const dispatch = useDispatch();

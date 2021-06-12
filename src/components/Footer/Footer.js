@@ -13,8 +13,9 @@ function Footer() {
             </Col>
             <Col md={{span: 2, offset: 1}}>
             <p className="footerHeader">Navigate</p>
-            <p className="text-white mb-2">Cart</p>
-            <p className="text-white">Wishlist</p>
+            <a href="/cart" style={{textDecoration: "none"}} className="text-white"><p>Cart</p></a>
+            <a href="/wishlist" style={{textDecoration: "none"}} className="text-white"><p>Wishlist</p></a>
+            <a href="/seller/login" style={{textDecoration: "none"}} className="text-white"><p>Become a Seller</p></a>
             </Col>
             <Col md={2}>
             <p className="footerHeader">Contact Us</p>

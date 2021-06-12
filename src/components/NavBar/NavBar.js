@@ -9,8 +9,8 @@ import { FaShoppingCart, FaHeart } from "react-icons/fa";
 function NavBar() {
   
   const dispatch = useDispatch();
-  const user = useSelector(state => state.authentication.user);
-  const loggedIn = useSelector(state => state.authentication.loggedIn);
+  const user = useSelector(state => state.userAuth.user);
+  const loggedIn = useSelector(state => state.userAuth.loggedIn);
 
   const handleLogout = () => {
 
@@ -45,7 +45,7 @@ function NavBar() {
               <NavDropdown.Item href="#action/3.2">My Orders</NavDropdown.Item>
               <NavDropdown.Item onClick={() => handleLogout()}>Log out</NavDropdown.Item>
               <NavDropdown.Divider />
-              <NavDropdown.Item href="#action/3.4">Sell on Capricon</NavDropdown.Item>
+              <NavDropdown.Item href="/seller/login">Sell on Capricon</NavDropdown.Item>
             </NavDropdown>
            ) : (
             <Button href="/login" className="px-5" variant="primary"><RiLoginCircleFill size={22} className="pr-2" style={{paddingBottom: 2}} />Login</Button>
