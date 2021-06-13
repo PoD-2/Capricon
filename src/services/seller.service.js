@@ -14,9 +14,8 @@ function login(seller, remember) {
   
     return axios.post(`${baseURL}/seller/login`, seller)
     .then(seller => {
-        if(remember) {
-            localStorage.setItem('seller', JSON.stringify(seller));
-        }
+        
+        localStorage.setItem('seller', JSON.stringify(seller.data));
         return seller.data;
     })
     .catch(err => {
@@ -37,9 +36,7 @@ function register(seller, remember) {
   
         return axios.post(`${baseURL}/seller/register`, seller)
         .then(seller => {
-            if(remember) {
-                localStorage.setItem('seller', JSON.stringify(seller));
-            }
+            localStorage.setItem('seller', JSON.stringify(seller.data));
             return seller.data;
         })
         .catch(err => {

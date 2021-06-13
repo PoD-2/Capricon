@@ -11,25 +11,33 @@ export default function RouteWrapper({component: Component, isPrivate, alwaysPub
 
     const signed = user ? true : false;
     const sellerSigned = seller ? true : false;
+    console.log("privacy" + user);
+    console.log("signe " + signed);
+
 
     //Route is private and the user is not logged in
     if(isPrivate && !signed){
         return <Redirect to="/Login" />;
     }
     
-    if(!alwaysPublic && !isPrivate && signed){
+    if(!alwaysPublic && !isPrivate && signed && !isSeller && !isSellerPrivate){
         return <Redirect to="/" />;
     }
     
     //seller url will be opened only when normal account is logged in
-    if((isSeller || isSellerPrivate) && !user){
+    if((isSeller || isSellerPrivate) && !signed){
         return <Redirect to="/login" />;
     }
     
     //if seller is logged in, it will redirect to dashboard when seller tries to access seller login or dashboard
-    if(isSeller && user && sellerSigned){
+    if(isSeller && signed && sellerSigned){
          return <Redirect to="/seller/dashboard" />;
     }
+
+    if(isSellerPrivate && signed && !sellerSigned){
+            return <Redirect to="/seller/login" />;
+           }
+
 
     return <Route {...rest} component={Component} />;
 }
@@ -48,5 +56,7 @@ RouteWrapper.defaultProps ={
     isSeller: false,
     isSellerPrivate: false
 };
+
+
 
 

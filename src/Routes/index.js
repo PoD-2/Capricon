@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Switch } from "react-router-dom";
+import { Switch, BrowserRouter } from "react-router-dom";
 import Route from "./Route";
 
 //pages import
@@ -16,17 +16,19 @@ import SellerDashboard from '../pages/SellerDashboard/SellerDashboard';
 
 function Routes() {
     return (
+        <BrowserRouter>
         <Switch>
         <Route path="/" exact component={HomePage} alwaysPublic />
         <Route path="/cart" component={CartPage} isPrivate />
-        <Route path="/login" component={LoginPage} />
+        <Route path="/login" component={LoginPage}  />
         <Route path="/register" component={RegisterPage} />
-        <Route path="/wishlist" component={WishList} />
+        <Route path="/wishlist" component={WishList} isPrivate />
         <Route path="/seller/login" component={SellerLogin} isSeller/>
         <Route path="/seller/register" component={SellerRegister} isSeller/>
         <Route path="/seller/dashboard" component={SellerDashboard} isSellerPrivate/>
         <Route component={ErrorPage} />
         </Switch>
+        </BrowserRouter>
     )
 }
 
