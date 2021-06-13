@@ -35,7 +35,7 @@ function logout() {
 
 function register(seller, remember) {
   
-        return axios.post(`${baseURL}/register`, seller)
+        return axios.post(`${baseURL}/seller/register`, seller)
         .then(seller => {
             if(remember) {
                 localStorage.setItem('seller', JSON.stringify(seller));

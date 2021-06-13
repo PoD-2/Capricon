@@ -20,7 +20,8 @@ function WishList() {
         <>
             <NavBar />
             <Container style={{ marginTop: 200 }}>
-                <p className="display-1">Wishlist</p>
+                <p className="display-1 mb-0">Wishlist</p>
+                <p className="text-muted text-monospace ml-5" style={{letterSpacing: 8}} >Your favourite collection</p>
                 <WishlistCard
                     align="left"
                     productId={1} 

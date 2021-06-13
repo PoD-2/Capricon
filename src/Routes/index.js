@@ -22,9 +22,9 @@ function Routes() {
         <Route path="/login" component={LoginPage} />
         <Route path="/register" component={RegisterPage} />
         <Route path="/wishlist" component={WishList} />
-        <Route path="/seller/login" component={SellerLogin} />
-        <Route path="/seller/register" component={SellerRegister} />
-        <Route path="/seller/dashboard" component={SellerDashboard} />
+        <Route path="/seller/login" component={SellerLogin} isSeller/>
+        <Route path="/seller/register" component={SellerRegister} isSeller/>
+        <Route path="/seller/dashboard" component={SellerDashboard} isSellerPrivate/>
         <Route component={ErrorPage} />
         </Switch>
     )

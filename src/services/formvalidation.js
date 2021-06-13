@@ -3,11 +3,13 @@ export const formValidation = {
     mobileNumberValidation,
     emailValidation,
     passwordValidation,
-    checkForCompanyName
+    checkForCompanyName,
+    zipcodeValidation
 };
 
 
 function nameValidation(submitted, name) {
+
   if(submitted){
     return name ? true : false
 } else {
@@ -41,15 +43,24 @@ function passwordValidation(submitted, password) {
      }
 }
 
+function zipcodeValidation(submitted, zipCode) {
+  if(submitted){
+    return (zipCode.length === 6) ? true : false
+ } else {
+     return true
+ }
+}
+
+
 
   //get company name from buisness email
   function checkForCompanyName (buisnessEmail) {
 
-    const popularEmailService = ["gmail", "outlook", "yahoo", "hotmail"];
+    const popularEmailServiceProvider = ["gmail", "outlook", "yahoo", "hotmail"];
     const companyName = buisnessEmail.substring(buisnessEmail.lastIndexOf("@") +1, buisnessEmail.lastIndexOf("."));
-    const checkIfNormalEmail = popularEmailService.includes(companyName);
+    const checkIfNormalEmail = popularEmailServiceProvider.includes(companyName);
     if(checkIfNormalEmail){
-      return " ";
+      return "";
     } else {
       return companyName;
     }
