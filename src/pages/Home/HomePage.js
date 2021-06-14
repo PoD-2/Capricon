@@ -1,7 +1,7 @@
 import React from 'react';
-import NavBar from '../../components/NavBar/NavBar';
-import AdCarousel from '../../components/AdCarousel/AdCarousel';
-import ProductCard from '../../components/ProductCard/ProductCard';
+import NavBar from '../../components/NavBar';
+import AdCarousel from '../../components/AdCarousel';
+import ProductCard from '../../components/ProductCard';
 import Footer from '../../components/Footer/Footer';
 import './Home.css';
 import { Col, Row, Container } from 'react-bootstrap';
@@ -17,7 +17,7 @@ function HomePage() {
         <div>
 
             <NavBar />
-            <div style={{paddingTop: 110}}>
+            <div style={{paddingTop: 110 }}>
             <AdCarousel />
             <Container fluid className="px-5">
             <h3 className="mt-5 mb-4" style={{fontFamily: "Lato-Regular", fontSize: 45}}>Deals of the day</h3>

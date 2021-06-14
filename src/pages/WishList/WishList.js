@@ -1,12 +1,12 @@
 import React from 'react'
 import { Container } from 'react-bootstrap'
-import NavBar from '../../components/NavBar/NavBar';
+import NavBar from '../../components/NavBar';
 import productPic from '../../images/shoeImg.jpeg';
 import product2 from '../../images/product2.jpeg';
 import product3 from '../../images/product3.jpeg';
 import product4 from '../../images/product4.jpeg';
 import Footer from '../../components/Footer/Footer';
-import WishlistCard from '../../components/WishlistCard/WishlistCard';
+import WishlistCard from '../../components/WishlistCard';
 import './WishList.css'
 
 function WishList() {

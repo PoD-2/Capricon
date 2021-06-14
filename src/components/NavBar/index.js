@@ -1,10 +1,11 @@
 import React from 'react';
-import { Navbar, Nav, NavDropdown, Form, FormControl, Button } from 'react-bootstrap';
+import { Navbar, Nav, NavDropdown, Form, Button, } from 'react-bootstrap';
 import Logo from '../../images/logo.svg';
 import { useDispatch, useSelector } from 'react-redux';
 import { userActions } from '../../redux/actions';
 import { RiLoginCircleFill } from "react-icons/ri";
 import { FaShoppingCart, FaHeart } from "react-icons/fa";
+import SearchBar from '../SearchBar';
 
 function NavBar() {
   
@@ -21,7 +22,7 @@ function NavBar() {
 
 
     return (
-        <Navbar collapseOnSelect bg="light" expand="lg" fixed="top" className="px-md-5 shadow-sm mb-5 rounded">
+        <Navbar collapseOnSelect bg="light" expand="lg" fixed="top" className="position-sticky px-md-5 shadow-sm mb-5 rounded">
         <Navbar.Brand href="/">
         <img
         src={Logo}
@@ -33,10 +34,9 @@ function NavBar() {
         </Navbar.Brand>
         
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
-        <Navbar.Collapse id="basic-navbar-nav">
-          <Form inline>
-            <FormControl type="text" placeholder="Search" className="mr-sm-2" />
-            <Button variant="outline-success">Search</Button>
+        <Navbar.Collapse id="basic-navbar-nav" className="">
+          <Form className="position-relative">
+            <SearchBar />
           </Form>
           <Nav className="ml-auto">
            {loggedIn ? (

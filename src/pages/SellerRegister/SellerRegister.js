@@ -327,7 +327,6 @@ export default function SellerRegister() {
                                 <Form.Control
                                     type="text"
                                     value={pincode}
-                                    pattern="\d{3,4}"
                                     maxLength={6}
                                     placeholder="Company pincode"
                                     className={'form-control' + (!validateZipCode() && ' is-invalid')}
