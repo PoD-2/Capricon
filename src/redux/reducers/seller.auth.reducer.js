@@ -1,7 +1,8 @@
 import { sellerConstants } from '../constants';
 
 let seller = JSON.parse(localStorage.getItem('seller'));
-const initialState = seller ? { loggedIn: true, seller: seller } : {};
+let tempSeller = JSON.parse(sessionStorage.getItem('seller'));
+const initialState = tempSeller ? { loggedIn: true, seller: tempSeller } : seller ? { loggedIn: true, seller: seller } : {};
 
 export function sellerAuth(state = initialState, action) {
     switch (action.type) {

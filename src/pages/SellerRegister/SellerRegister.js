@@ -25,11 +25,11 @@ export default function SellerRegister() {
     const [password, setPassword] = useState("");
     const [phoneNumber, setPhoneNumber] = useState(user ? user.phoneNumber : "");
     const [csPhoneNumber, setCsPhoneNumber] = useState("");
-    const [address, setAddress] = useState(user ? user.address.addressline : "");
-    const [city, setCity] = useState(user ? user.address.city : "");
-    const [state, setState] = useState(user ? user.address.state : "");
-    const [country, setCountry] = useState(user ? user.address.country : "");
-    const [pincode, setPincode] = useState(user ? user.address.pinCode : "");
+    const [address, setAddress] = useState(user ? user.address === undefined ? "" : user.address.addressline : "");
+    const [city, setCity] = useState(user ? user.address === undefined ? "" : user.address.city : "");
+    const [state, setState] = useState(user ? user.address === undefined ? "" : user.address.state : "");
+    const [country, setCountry] = useState(user ? user.address  === undefined ? "" : user.address.country : "");
+    const [pincode, setPincode] = useState(user ? user.address === undefined ? "" : user.address.pinCode : "");
     const [submitted, setSubmitted] = useState(false);
     const [rememberChecked, setRememberChecked] = useState(false);
 

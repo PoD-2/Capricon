@@ -14,7 +14,13 @@ function login(user, remember) {
   
     return axios.post(`${baseURL}/login`, user)
     .then(user => {
-        localStorage.setItem('user', JSON.stringify(user.data));
+
+        if(remember){
+            localStorage.setItem('user', JSON.stringify(user.data));
+        } else {
+            sessionStorage.setItem('user', JSON.stringify(user.data));
+        }
+
         return user.data;
     })
     .catch(err => {
@@ -35,7 +41,13 @@ function register(user, remember) {
   
         return axios.post(`${baseURL}/register`, user)
         .then(user => {
+
+            if(remember){
             localStorage.setItem('user', JSON.stringify(user.data));
+            } else {
+                sessionStorage.setItem('user', JSON.stringify(user.data));
+            }
+
             return user.data;
         })
         .catch(err => {

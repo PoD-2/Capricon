@@ -11,9 +11,6 @@ export default function RouteWrapper({component: Component, isPrivate, alwaysPub
 
     const signed = user ? true : false;
     const sellerSigned = seller ? true : false;
-    console.log("privacy" + user);
-    console.log("signe " + signed);
-
 
     //Route is private and the user is not logged in
     if(isPrivate && !signed){
