@@ -5,11 +5,13 @@ import { BiSearch } from "react-icons/bi";
 import { AiFillCloseCircle } from "react-icons/ai";
 import { Spinner } from "react-bootstrap";
 import { searchBarServices } from "../../services/searchBar.service";
+import { alertActions } from '../../redux/actions';
+import { useDispatch } from 'react-redux';
 import ProductSearch from '../ProductSearch';
 import './SearchBar.css';
 
 
-function SearchBar() {
+function SearchBar(props) {
 
     const [isExpanded, setExpanded] = useState(false);
     const [parentRef, isClickedOutside] = useClickOutside();
@@ -18,7 +20,9 @@ function SearchBar() {
     const [isLoading, setLoading] = useState(false);
     const [products, setProducts] = useState([]);
     const [noProducts, setNoProducts] = useState(false);
-
+    const dispatch = useDispatch();
+    
+    //check if products are empty
     const isEmpty = !products || products.length === 0;
 
     const changeHandler = (e) => {
@@ -61,11 +65,12 @@ function SearchBar() {
                     setProducts(products);
                 },
                 error => {
-                    console.log(error.toString());
+                    dispatch(alertActions.error(error.toString()));
                 })
             .finally(
                 setLoading(false)
             );
+
     }
 
 
@@ -76,15 +81,15 @@ function SearchBar() {
     const containerVariants = {
         expanded: {
             height: "30em",
-            position: "absolute",
-            top: -30,
-            left: 0
+            position: props.position,
+            top: props.top,
+            left: props.left
         },
         collapsed: {
             height: "3.8em",
-            position: "absolute",
-            top: -30,
-            left: 0
+            position: props.position,
+            top: props.top,
+            left: props.left
         },
     };
 
@@ -96,11 +101,13 @@ function SearchBar() {
     return (
         <motion.div
             className="searchBarContainer shadow-sm"
+            style={{width: props.barLength}}
             animate={isExpanded ? "expanded" : "collapsed"}
             variants={containerVariants}
             transition={containerTransition}
             ref={parentRef}
         >
+
             <div className="SearchInputContainer">
                 <BiSearch size={28} color="#bebebe" className="mr-1" />
                 <input
@@ -116,7 +123,7 @@ function SearchBar() {
                     {isExpanded && (
                         <motion.span
                             className="CloseIcon"
-                            whileHover={{ scale: 1.1, color: "#bebebe" }}
+                            whileHover={{ scale: 1.5, color: "#bebebe" }}
                             key="close-icon"
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
