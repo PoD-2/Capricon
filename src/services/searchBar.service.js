@@ -10,7 +10,6 @@ function searchProducts(searchQuery) {
 
     return axios.get(`${baseURL}/product/search?search=${searchQuery}`)
     .then(response => {
-        
         return response.data;
     })
     .catch(err => {
