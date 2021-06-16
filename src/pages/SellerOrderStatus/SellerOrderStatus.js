@@ -7,7 +7,11 @@ function SellerOrderStatus() {
             <h3 className="sellerPageTitle">Order Status</h3>
             <span className="LineSeperator mb-5" />
             <div style={{height: 700, overflow: "auto"}}>
-            {/* <OrderStatusCard /> */}
+            <OrderStatusCard />
+            <OrderStatusCard />
+            <OrderStatusCard />
+            <OrderStatusCard />
+            <OrderStatusCard />
             </div>
         </div>
     )
