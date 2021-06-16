@@ -51,7 +51,7 @@ function ProductCard() {
           </Carousel>
 
           <div style={{ padding: 10, textAlign: "center" }}>
-            <a href="/login" className="m-0, p-0">
+            <a href="/login" className="m-0, p-0" style={{textDecoration: "none"}}>
             <p className="productName" style={{fontWeight: 500}}>Jordan Delta 2</p>
             </a>
             <p className="text-muted text-monospace mb-1" style={{ fontSize: 20 }}>Nike Shoes</p>
