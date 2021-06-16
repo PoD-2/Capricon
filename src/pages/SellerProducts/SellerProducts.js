@@ -1,10 +1,58 @@
-import React from 'react'
+import React, { useState } from 'react'
+import { Row, Col, Button } from 'react-bootstrap'
+import SellerProductCard from '../../components/SellerProductCard'
+import './SellerProducts.css';
+import ProductUpload from '../../components/ProductUpload';
 
 function SellerProducts() {
+
+    const [showModal, setShowModel] = useState(false);
+
+
+    const closeModal = () => {
+        setShowModel(false);
+    }
+
     return (
         <div>
-            <h3 className="sellerPageTitle">Products</h3>
-            <span className="LineSeperator mb-3" />
+            <Row>
+                <Col>
+                    <h3 className="sellerPageTitle">Products</h3>
+                </Col>
+                <Col className="text-right">
+                    <Button variant="info" onClick={() => setShowModel(true)}>Add Product</Button>
+                </Col>
+            </Row>
+
+            <span className="LineSeperator mb-3 mt-2" />
+            <ProductUpload
+                showModal={showModal}
+                closeModal={closeModal}
+                
+            />
+            <div className="noScroll" style={{ height: 650 }}>
+                <Row className="">
+                    <Col>
+                        <SellerProductCard />
+                    </Col>
+                    <Col>
+                        <SellerProductCard />
+                    </Col>
+                    <Col>
+                        <SellerProductCard />
+                    </Col>
+                    <Col>
+                        <SellerProductCard />
+                    </Col>
+                    <Col>
+                        <SellerProductCard />
+                    </Col>
+                    <Col>
+                        <SellerProductCard />
+                    </Col>
+                </Row>
+            </div>
+
         </div>
     )
 }

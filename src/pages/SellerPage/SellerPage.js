@@ -25,8 +25,9 @@ function SellerPage() {
 
 
     return (
-        <div class="d-flex flex-row min-vh-100" >
+        <div class="d-flex flex-row min-vh-100 position-relative" >
             <div class="min-vh-100 d-xl-flex d-none flex-shrink-0" style={{ flex: 1, flexDirection: "column" }}>
+            
                 <Sidebar />
             </div>
             <div class="dashboard d-flex flex-shrink-1" style={{ flexDirection: "column", backgroundColor: bgColor }}>

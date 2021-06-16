@@ -4,7 +4,9 @@ export const formValidation = {
     emailValidation,
     passwordValidation,
     checkForCompanyName,
-    zipcodeValidation
+    zipcodeValidation,
+    checkOnlyNumber,
+    productImageValidation
 };
 
 
@@ -65,4 +67,20 @@ function zipcodeValidation(submitted, zipCode) {
       return companyName;
     }
 
+  }
+
+  function checkOnlyNumber (submitted, number) {
+    if(submitted){
+      return /^\d+$/.test(number);
+   } else {
+       return true
+   }
+  }
+
+  function productImageValidation(submitted, imageFiles) {
+    if(submitted){
+      return (imageFiles.length < 5) ? true : false;
+   } else {
+       return true
+   }
   }
