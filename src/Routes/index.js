@@ -11,6 +11,7 @@ import LoginPage from '../pages/Login/LoginPage';
 import RegisterPage from '../pages/Register/RegisterPage';
 import ErrorPage from '../pages/SystemPages/ErrorPage';
 import WishList from '../pages/WishList/WishList';
+import ProductResults from '../pages/ProductResults/ProductResults';
 import SellerLogin from '../pages/SellerLogin/SellerLogin';
 import SellerRegister from '../pages/SellerRegister/SellerRegister';
 import SellerPage from '../pages/SellerPage/SellerPage';
@@ -25,6 +26,7 @@ function Routes() {
         <Route path="/login" component={LoginPage}  />
         <Route path="/register" component={RegisterPage} />
         <Route path="/wishlist" component={WishList} isPrivate />
+        <Route path="/results" component={ProductResults} alwaysPublic />
         <Route path="/seller/login" component={SellerLogin} isSeller/>
         <Route path="/seller/register" component={SellerRegister} isSeller/>
         <Route path="/seller" component={SellerPage} isSellerPrivate/>
