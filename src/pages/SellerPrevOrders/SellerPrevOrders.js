@@ -14,147 +14,143 @@ function SellerPrevOrders(props) {
 
     return (
         <div>
-         <p className="display-4 mb-5" style={{color: props.isdarkTheme? "#ffffff" : "black"}}>Your Previous Orders</p>
+         <h3 className="mb-3 sellerPageTitle" style={{color: props.isdarkTheme? "#ffffff" : "black"}}>Your Previous Orders</h3>
+         <span className="LineSeperator mb-3" />
             <div className="my-5">
                 <ToggleButton isOn={isOn} onToggleClick={handleToggleClick} />
             </div>
+            
             
         <div style={{ height: 600, overflow: "auto" }}>
             <Table striped bordered hover variant={props.isdarkTheme ? "dark" : ""} responsive>
                 <thead>
                     <tr>
                         <th>#</th>
-                        <th>First Name</th>
-                        <th>Last Name</th>
-                        <th>Username</th>
+                        <th>Name</th>
+                        <th>Product</th>
+                        <th>Price</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
                         <td>1</td>
                         <td>Mark</td>
-                        <td>Otto</td>
-                        <td>@mdo</td>
+                        <td>Watch</td>
+                        <td>$ 29</td>
                     </tr>
                     <tr>
                         <td>1</td>
                         <td>Mark</td>
-                        <td>Otto</td>
-                        <td>@mdo</td>
+                        <td>Watch</td>
+                        <td>$ 29</td>
                     </tr>
                     <tr>
                         <td>1</td>
                         <td>Mark</td>
-                        <td>Otto</td>
-                        <td>@mdo</td>
+                        <td>Watch</td>
+                        <td>$ 29</td>
                     </tr>
                     <tr>
                         <td>1</td>
                         <td>Mark</td>
-                        <td>Otto</td>
-                        <td>@mdo</td>
+                        <td>Watch</td>
+                        <td>$ 29</td>
                     </tr>
                     <tr>
                         <td>1</td>
                         <td>Mark</td>
-                        <td>Otto</td>
-                        <td>@mdo</td>
+                        <td>Watch</td>
+                        <td>$ 29</td>
                     </tr>
                     <tr>
                         <td>1</td>
                         <td>Mark</td>
-                        <td>Otto</td>
-                        <td>@mdo</td>
+                        <td>Watch</td>
+                        <td>$ 29</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Jacob</td>
+                        <td>Watch</td>
+                        <td>$ 29</td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>Mark</td>
+                        <td>Watch</td>
+                        <td>$ 29</td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>Mark</td>
+                        <td>Watch</td>
+                        <td>$ 29</td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>Mark</td>
+                        <td>Watch</td>
+                        <td>$ 29</td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>Mark</td>
+                        <td>Watch</td>
+                        <td>$ 29</td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>Mark</td>
+                        <td>Watch</td>
+                        <td>$ 29</td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>Mark</td>
+                        <td>Watch</td>
+                        <td>$ 29</td>
                     </tr>
                     <tr>
                         <td>2</td>
                         <td>Jacob</td>
                         <td>Thornton</td>
-                        <td>@fat</td>
+                        <td>$ 29</td>
                     </tr>
                     <tr>
                         <td>1</td>
                         <td>Mark</td>
-                        <td>Otto</td>
-                        <td>@mdo</td>
+                        <td>Watch</td>
+                        <td>$ 29</td>
                     </tr>
                     <tr>
                         <td>1</td>
                         <td>Mark</td>
-                        <td>Otto</td>
-                        <td>@mdo</td>
+                        <td>Watch</td>
+                        <td>$ 29</td>
                     </tr>
                     <tr>
                         <td>1</td>
                         <td>Mark</td>
-                        <td>Otto</td>
-                        <td>@mdo</td>
+                        <td>Watch</td>
+                        <td>$ 29</td>
                     </tr>
                     <tr>
                         <td>1</td>
                         <td>Mark</td>
-                        <td>Otto</td>
-                        <td>@mdo</td>
+                        <td>Watch</td>
+                        <td>$ 29</td>
                     </tr>
                     <tr>
                         <td>1</td>
                         <td>Mark</td>
-                        <td>Otto</td>
-                        <td>@mdo</td>
+                        <td>Watch</td>
+                        <td>$ 29</td>
                     </tr>
                     <tr>
                         <td>1</td>
                         <td>Mark</td>
-                        <td>Otto</td>
-                        <td>@mdo</td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>Jacob</td>
-                        <td>Thornton</td>
-                        <td>@fat</td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                        <td>@mdo</td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                        <td>@mdo</td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                        <td>@mdo</td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                        <td>@mdo</td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                        <td>@mdo</td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                        <td>@mdo</td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>Jacob</td>
-                        <td>Thornton</td>
-                        <td>@fat</td>
+                        <td>Watch</td>
+                        <td>$ 29</td>
                     </tr>
                 </tbody>
             </Table>

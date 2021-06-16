@@ -53,7 +53,7 @@ function NavBar() {
               <NavDropdown.Item href="/seller/login">Sell on Capricon</NavDropdown.Item>
             </NavDropdown>
           ) : (
-            <Button href="/login" className="px-5 h-25 my-3 py-2" variant="primary"><RiLoginCircleFill size={22} className="pr-2"/>Login</Button>
+            <Button href="/login" className="px-5 py-2" variant="primary"><RiLoginCircleFill size={22} className="pr-2"/>Login</Button>
           )}
 
           <Nav.Link href="/wishlist" className="px-xl-5 py-xl-2 py-sm-4"><FaHeart className="pr-2 pb-1" size={28} /> Wishlist</Nav.Link>

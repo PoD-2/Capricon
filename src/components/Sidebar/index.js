@@ -17,7 +17,7 @@ function Sidebar() {
         dispatch(sellerActions.logout());
     }
 
-    const [selectedMenu, setSelectedMenu] = useState("/seller/dashboard");
+    const [selectedMenu, setSelectedMenu] = useState("");
 
     return (
        <>
@@ -41,16 +41,16 @@ function Sidebar() {
                 onSelect={(selectedKey) => setSelectedMenu(selectedKey)}
             >
                 <Nav.Item>
-                    <Nav.Link href="/seller/dashboard" className="px-xl-5 py-xl-2 py-sm-4 text-white text-left"><RiDashboardLine className="pr-2 pb-1" size={34} /> DASHBOARD</Nav.Link>
+                    <Nav.Link href="/seller/dashboard" className="px-xl-5 py-xl-2 py-sm-4 text-white text-left Sidebar-nav-link"><RiDashboardLine className="pr-2 pb-1 Sidebar-nav-link-icon" size={34} /> DASHBOARD</Nav.Link>
                 </Nav.Item>
                 <Nav.Item>
-                    <Nav.Link href="#2" className="px-xl-5 py-xl-2 py-sm-4 text-white text-left"><FiCodesandbox className="pr-2 pb-1" size={34} /> PRODUCTS</Nav.Link>
+                    <Nav.Link href="/seller/products" className="px-xl-5 py-xl-2 py-sm-4 text-white text-left Sidebar-nav-link"><FiCodesandbox className="pr-2 pb-1 Sidebar-nav-link-icon" size={34} /> PRODUCTS</Nav.Link>
                 </Nav.Item>
                 <Nav.Item>
-                    <Nav.Link href="#1" className="px-xl-5 py-xl-2 py-sm-4 text-white text-left"><HiOutlineClipboardList className="pr-2 pb-1" size={34} /> ORDER STATUS</Nav.Link>
+                    <Nav.Link href="/seller/orderstatus" className="px-xl-5 py-xl-2 py-sm-4 text-white text-left Sidebar-nav-link"><HiOutlineClipboardList className="pr-2 pb-1 Sidebar-nav-link-icon" size={34} /> ORDER STATUS</Nav.Link>
                 </Nav.Item>
                 <Nav.Item>
-                    <Nav.Link href="#3" className="px-xl-5 py-xl-2 py-sm-4 text-white text-left"><HiOutlineClipboardCheck className="pr-2 pb-1" size={34} /> PREVIOUS ORDERS</Nav.Link>
+                    <Nav.Link href="/seller/previousorders" className="px-xl-5 py-xl-2 py-sm-4 text-white text-left Sidebar-nav-link"><HiOutlineClipboardCheck className="pr-2 pb-1 Sidebar-nav-link-icon" size={34} /> PREVIOUS ORDERS</Nav.Link>
                 </Nav.Item>
 
             </Nav>
