@@ -1,7 +1,10 @@
 import React, { useState } from 'react'
-import { Accordion, Form, Card, Container, Col } from 'react-bootstrap'
+import { Accordion, Form, Card, Container, Col, Button } from 'react-bootstrap'
 import NavBar from '../../components/NavBar'
 import { formValidation as validate } from '../../services';
+import PaymentForm from '../../components/PaymentForm';
+import PaymentSuccessCard from '../../components/PaymentSuccessCard';
+import './Checkout.css'
 
 function Checkout() {
 
@@ -12,6 +15,12 @@ function Checkout() {
     const [state, setState] = useState("");
     const [country, setCountry] = useState("");
     const [submitted, setSubmitted] = useState(false);
+    const [addressValid, setAddressValid] = useState(false);
+    const [cvc, setCvc] = useState("");
+    const [expiry, setExpiry] = useState("");
+    const [name, setName] = useState("");
+    const [number, setNumber] = useState("");
+    const [showModal, setShowModel] = useState(false);
 
 
 
@@ -38,20 +47,49 @@ function Checkout() {
     }
 
 
+    function checkAllValidity(){
+        
+        if(validateAddress() && validateCity() && validateState() && validateCountry() && validatePinCode()){
+            return true;
+        }
+
+        return false;
+       
+    }
+
+    function handleAddressSubmit(event){
+        event.preventDefault();
+        setSubmitted(true);
+
+        if(checkAllValidity() && submitted){
+            setAddressValid(true);
+        }
+
+    }
+
+    function handlePayment(){
+        setShowModel(true);
+    }
+
+
+
     return (
         <>
             <NavBar />
             <Container>
+            <PaymentSuccessCard 
+                showModal={showModal}
+            />
                 <h3 className="mb-3 mt-5 sellerPageTitle">CHECK OUT</h3>
                 <span className="LineSeperator mb-5" />
                 <Accordion defaultActiveKey="0">
                     <Card>
-                        <Accordion.Toggle as={Card.Header} eventKey="0">
+                        <Accordion.Toggle as={Button} variant="secondary" className="text-left" eventKey="0">
                             Delivery Address
                         </Accordion.Toggle>
                         <Accordion.Collapse eventKey="0">
                             <Card.Body>
-                                <Form>
+                                <Form onSubmit={handleAddressSubmit}>
 
                                     <Form.Row>
 
@@ -118,7 +156,7 @@ function Checkout() {
                                             <Form.Label>Country</Form.Label>
                                             <Form.Control
                                                 type="text"
-                                                value={state}
+                                                value={country}
                                                 placeholder="Your Country. eg: India"
                                                 className={'form-control' + (!validateCountry() && ' is-invalid')}
                                                 onChange={(e) => setCountry(e.target.value)}
@@ -129,16 +167,33 @@ function Checkout() {
 
                                         </Form.Group>
                                     </Form.Row>
+                                    <Button type="submit" variant="dark" disabled={addressValid ? true : false}>
+                                  Deliver Here
+                                </Button>
+                                {addressValid &&  <div className="text-success mt-2">Address Saved Successfully</div>}
+                                
                                 </Form>
                             </Card.Body>
                         </Accordion.Collapse>
                     </Card>
                     <Card>
-                        <Accordion.Toggle as={Card.Header} eventKey="1">
+                        <Accordion.Toggle as={Button} variant="secondary" disabled={addressValid ? false : true} className="text-left"  onClick={() => console.log("hii")} eventKey="1">
                             Payment Options
                         </Accordion.Toggle>
                         <Accordion.Collapse eventKey="1">
-                            <Card.Body>Hello! I'm another body</Card.Body>
+                            <Card.Body>
+                                <PaymentForm 
+                                 cvc={cvc}
+                                 setCvc={setCvc}
+                                 expiry={expiry}
+                                 setExpiry={setExpiry}
+                                 name={name}
+                                 setName={setName}
+                                 number={number}
+                                 setNumber={setNumber}
+                                 handlePayment={handlePayment}
+                                />
+                            </Card.Body>
                         </Accordion.Collapse>
                     </Card>
                 </Accordion>

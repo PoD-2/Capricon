@@ -28,7 +28,6 @@ function SellerProducts() {
             <ProductUpload
                 showModal={showModal}
                 closeModal={closeModal}
-                
             />
             <div className="noScroll" style={{ height: 650 }}>
                 <Row className="">
