@@ -1,7 +1,7 @@
 import React from 'react';
 import { Row, Col, Image, Button } from 'react-bootstrap'
 import './WishlistCard.css';
-
+import { FaTrash } from "react-icons/fa";
 
 
 function WishlistCard(props) {
@@ -42,7 +42,7 @@ function WishlistCard(props) {
                             type="button"
                             onClick={() => props.handleImageDelete()}
                         >
-                        <p style={{textAlign: "center"}}>X</p>
+                        <FaTrash size={22} color="white" />
                         </div>
                     </Col>
                     <Col md={alignstyle.textContainerAlignment} className={alignstyle.textContainerClassName}>

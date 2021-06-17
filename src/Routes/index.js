@@ -15,6 +15,7 @@ import ProductResults from '../pages/ProductResults/ProductResults';
 import SellerLogin from '../pages/SellerLogin/SellerLogin';
 import SellerRegister from '../pages/SellerRegister/SellerRegister';
 import SellerPage from '../pages/SellerPage/SellerPage';
+import Checkout from '../pages/Checkout/Checkout';
 
 
 function Routes() {
@@ -26,6 +27,7 @@ function Routes() {
         <Route path="/login" component={LoginPage}  />
         <Route path="/register" component={RegisterPage} />
         <Route path="/wishlist" component={WishList} isPrivate />
+        <Route path="/checkout" component={Checkout} isPrivate />
         <Route path="/results" component={ProductResults} alwaysPublic />
         <Route path="/seller/login" component={SellerLogin} isSeller/>
         <Route path="/seller/register" component={SellerRegister} isSeller/>
