@@ -1,7 +1,9 @@
 import React from 'react';
 
-import { Switch, BrowserRouter } from "react-router-dom";
+import { Switch } from "react-router-dom";
 import Route from "./Route";
+import { BrowserRouter } from 'react-router-dom';
+
 
 
 //pages import
@@ -32,7 +34,7 @@ function Routes() {
         <Route path="/wishlist" component={WishList} isPrivate />
         <Route path="/checkout" component={Checkout} isPrivate />
         <Route path="/Product" component={Product} alwaysPublic />
-        <Route path="/results" component={ProductResults} alwaysPublic />
+        <Route path="/search" component={ProductResults} alwaysPublic />
         <Route path="/orders" component={UserOrder} isPrivate />
         <Route path="/seller/login" component={SellerLogin} isSeller/>
         <Route path="/seller/register" component={SellerRegister} isSeller/>

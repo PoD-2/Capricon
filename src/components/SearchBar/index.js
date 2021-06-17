@@ -6,9 +6,11 @@ import { AiFillCloseCircle } from "react-icons/ai";
 import { Spinner } from "react-bootstrap";
 import { searchBarServices } from "../../services/searchBar.service";
 import { alertActions } from '../../redux/actions';
+import { useHistory } from "react-router-dom";
 import { useDispatch } from 'react-redux';
 import ProductSearch from '../ProductSearch';
 import './SearchBar.css';
+
 
 
 function SearchBar(props) {
@@ -18,7 +20,33 @@ function SearchBar(props) {
     const inputRef = useRef();
     const [searchQuery, setSearchQuery] = useState("");
     const [isLoading, setLoading] = useState(false);
-    const [products, setProducts] = useState([]);
+    let history = useHistory();
+    const [products, setProducts] = useState([
+        {
+            "productId": 1,
+            "productName": "SmartPhone",
+            "category": "gadgets",
+            "color": "black",
+            "price": 10000,
+            "qty": 2
+        },
+        {
+            "productId": 1,
+            "productName": "SmartPhone",
+            "category": "gadgets",
+            "color": "black",
+            "price": 10000,
+            "qty": 2
+        },
+        {
+            "productId": 1,
+            "productName": "SmartPhone",
+            "category": "gadgets",
+            "color": "black",
+            "price": 10000,
+            "qty": 2
+        }
+    ]);
     const [noProducts, setNoProducts] = useState(false);
     const dispatch = useDispatch();
     
@@ -49,19 +77,19 @@ function SearchBar(props) {
     }, [isClickedOutside]);
 
     useEffect(() => {
-        searchProducts()
+        suggestProducts()
     }, [searchQuery]);
 
 
-    //search products api
-    const searchProducts = () => {
+    //suggest products api
+    const suggestProducts = () => {
         if (!searchQuery || searchQuery.trim() === "") return;
         setLoading(true);
         setNoProducts(false);
-        searchBarServices.searchProducts(searchQuery)
+        searchBarServices.suggestProducts(searchQuery)
             .then(
                 products => {
-                    if (products && products.length === 0) noProducts(true);
+                    if (products && products.length === 0) setNoProducts(true);
                     setProducts(products);
                 },
                 error => {
@@ -70,7 +98,30 @@ function SearchBar(props) {
             .finally(
                 setLoading(false)
             );
+    }
 
+    const searchProducts = (value) => {
+        if (!value || value.trim() === "") return;
+
+        history.push({
+            pathname: '/search',
+              state: {searchTerm: value} // your data array of objects
+          })
+    }
+
+
+
+
+
+    const handleEnterKey = (e) => {
+        if (e.key === 'Enter') {
+            e.preventDefault();
+            searchProducts(e.target.value);
+          }
+    }
+
+    const handleClick = (value) => {
+        searchProducts(value);
     }
 
 
@@ -112,12 +163,13 @@ function SearchBar(props) {
                 <BiSearch size={28} color="#bebebe" className="mr-1" />
                 <input
                     className="searchInput"
-                    style={{ width: '100%', height: '100%', borderWidth: 0, outline: 0, color: "black", backgroundColor: "transparent", }}
+                    style={{ width: '100%', height: '100%', borderWidth: 0, outline: 0, color: "black", backgroundColor: "transparent"}}
                     type="text"
                     placeholder="Search for products"
                     ref={inputRef}
                     value={searchQuery}
                     onChange={changeHandler}
+                    onKeyDown={handleEnterKey}
                 />
                 <AnimatePresence>
                     {isExpanded && (
@@ -157,10 +209,11 @@ function SearchBar(props) {
                     )}
                     {!isLoading && !isEmpty && (
                         <>
-                            {products.map((products) => (
+                            {products.map((product) => (
                                 <ProductSearch
-                                    productName={products.productName}
-                                    category={products.category}
+                                    productName={product.productName}
+                                    category={product.category}
+                                    onClick={handleClick}
                                 />
                             ))}
                         </>

@@ -30,7 +30,7 @@ function SellerPage() {
             
                 <Sidebar />
             </div>
-            <div class="dashboard d-flex flex-shrink-1" style={{ flexDirection: "column", backgroundColor: bgColor }}>
+            <div class="dashboard d-flex flex-shrink-1 vh-100" style={{ flexDirection: "column", backgroundColor: bgColor, overflow: "auto" }}>
                 <SellerNavBar />
                 <Container className="mt-xl-5" style={{ flex: 1 }}>
                 <Switch>

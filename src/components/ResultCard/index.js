@@ -4,7 +4,7 @@ import product4 from '../../images/product4.jpeg'
 import { BsHeartFill } from "react-icons/bs";
 import { useState } from 'react';
 
-function ResultCard() {
+function ResultCard(props) {
 
     const [isHover, setIsHover] = useState(false);
     const [isClicked, setIsClicked] = useState(false);
@@ -20,17 +20,17 @@ function ResultCard() {
                      <BsHeartFill size={30} color="white" className="position-absolute" style={{ top: 10, right: 10, zIndex: 5 }} />}
                 </div>
             </Col>
-            <Col md={{ span: 6 }} >
-                <p style={{ fontSize: 28, fontFamily: "Lato-Bold" }}>Sony Xperia</p>
+            <Col md={{ span: 6 }} onClick={() => props.onClick(props.productId)}>
+                <p style={{ fontSize: 28, fontFamily: "Lato-Bold" }}>{props.productName}</p>
 
-                <p>3 GB RAM | 32 GB ROM | Expandable Upto 200</p>
-                <p>13.21 cm (5.2 inch) Full HD Display</p>
+                <p>Category: {props.category}</p>
+                <p>color: {props.color}</p>
                 <p>23MP Rear Camera | 5MP Front Camera</p>
 
             </Col>
             <Col md={{ span: 2 }} className="text-right">
-                <p style={{ color: "limegreen", fontSize: 25 }}>At ₹20000</p>
-                <p style={{ color: "lightsteelblue", fontSize: 20 }}>Only 20 left</p>
+                <p style={{ color: "limegreen", fontSize: 25 }}>At ₹{props.price}</p>
+                <p style={{ color: "lightsteelblue", fontSize: 20 }}>Only {props.quantity} left</p>
             </Col>
             <span className="LineSeperator mt-3" />
         </Row>

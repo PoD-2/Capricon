@@ -21,7 +21,7 @@ function SellerPrevOrders(props) {
             </div>
             
             
-        <div style={{ height: 600, overflow: "auto" }}>
+        <div>
             <Table striped bordered hover variant={props.isdarkTheme ? "dark" : ""} responsive>
                 <thead>
                     <tr>

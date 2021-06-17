@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import { Row, Col, Button } from 'react-bootstrap'
 import SellerProductCard from '../../components/SellerProductCard'
-import './SellerProducts.css';
 import ProductUpload from '../../components/ProductUpload';
 
 function SellerProducts() {
@@ -29,7 +28,7 @@ function SellerProducts() {
                 showModal={showModal}
                 closeModal={closeModal}
             />
-            <div className="noScroll" style={{ height: 650 }}>
+            <div>
                 <Row className="">
                     <Col>
                         <SellerProductCard />
