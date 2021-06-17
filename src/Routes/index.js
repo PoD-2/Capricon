@@ -11,12 +11,14 @@ import LoginPage from '../pages/Login/LoginPage';
 import RegisterPage from '../pages/Register/RegisterPage';
 import ErrorPage from '../pages/SystemPages/ErrorPage';
 import WishList from '../pages/WishList/WishList';
+import Product from '../pages/Product/Product';
 import ProductResults from '../pages/ProductResults/ProductResults';
 import UserOrder from '../pages/UserOrder/UserOrder';
 import SellerLogin from '../pages/SellerLogin/SellerLogin';
 import SellerRegister from '../pages/SellerRegister/SellerRegister';
 import SellerPage from '../pages/SellerPage/SellerPage';
 import Checkout from '../pages/Checkout/Checkout';
+
 
 
 function Routes() {
@@ -29,6 +31,7 @@ function Routes() {
         <Route path="/register" component={RegisterPage} />
         <Route path="/wishlist" component={WishList} isPrivate />
         <Route path="/checkout" component={Checkout} isPrivate />
+        <Route path="/Product" component={Product} alwaysPublic />
         <Route path="/results" component={ProductResults} alwaysPublic />
         <Route path="/orders" component={UserOrder} isPrivate />
         <Route path="/seller/login" component={SellerLogin} isSeller/>
