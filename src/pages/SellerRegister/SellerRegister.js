@@ -5,6 +5,7 @@ import Logo from '../../images/capcricon.png';
 import { useDispatch, useSelector } from 'react-redux';
 import { sellerActions, alertActions } from '../../redux/actions';
 import { formValidation as validate } from '../../services';
+import { useHistory } from "react-router-dom";
 
 export default function SellerRegister() {
 
@@ -32,6 +33,7 @@ export default function SellerRegister() {
     const [pincode, setPincode] = useState(user ? user.address === undefined ? "" : user.address.pinCode : "");
     const [submitted, setSubmitted] = useState(false);
     const [rememberChecked, setRememberChecked] = useState(false);
+    let history = useHistory();
 
 
 
@@ -114,7 +116,7 @@ export default function SellerRegister() {
         //dispatch only if input fields have value and also password is 8 charachters min
         if (checkAllValidity() && submitted) {
             const seller = { sellerName, companyName, "emailId": companyEmail, csEmailId, password, phoneNumber, csPhoneNumber, "address": {"line": address, city, pincode, state, country}};
-            dispatch(sellerActions.register(seller, rememberChecked));
+            dispatch(sellerActions.register(seller, rememberChecked, history));
 
         }
     }

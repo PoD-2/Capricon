@@ -6,6 +6,7 @@ import { Container, Spinner } from 'react-bootstrap';
 import { searchBarServices } from "../../services/searchBar.service";
 import { alertActions } from '../../redux/actions';
 import { useDispatch } from 'react-redux';
+import { useHistory } from "react-router-dom";
 
 function ProductResults(props) {
 
@@ -14,6 +15,7 @@ function ProductResults(props) {
     const [noProducts, setNoProducts] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
     const dispatch = useDispatch();
+    let history = useHistory();
     
 
     // search term
@@ -33,8 +35,14 @@ function ProductResults(props) {
             });
     }, [dispatch, searchTerm]);
 
+
     const handleClick = (value) => {
-        console.log(value);
+        if (!value || value.trim() === "") return;
+        
+        history.push({
+            pathname: '/Product',
+              state: {productId: value} 
+          })
     }
 
 
@@ -43,14 +51,14 @@ function ProductResults(props) {
         <>
         <NavBar/>
         <Container>
-        <p style={{fontSize:20}} className="mb-5">Search Results for: Smart Phones</p>
+        <p style={{fontSize:20}} className="mb-5">Search Results for: {searchTerm}</p>
         {isLoading && (
-                        <div className="LoadingWrapper">
+                        <div className="LoadingWrapper vh-100">
                             <Spinner animation="grow" color="#000" size={20} />
                         </div>
                     )}
         {!isLoading && noProducts && (
-                        <div className="LoadingWrapper">
+                        <div className="LoadingWrapper vh-100">
                             <span className="WarningMessage">No such products!</span>
                         </div>
                     )}

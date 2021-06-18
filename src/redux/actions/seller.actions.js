@@ -1,7 +1,6 @@
 import { sellerConstants } from '../constants';
 import { sellerService } from '../../services/';
 import { alertActions } from './';
-import { history } from '../../helpers/history';
 
 export const sellerActions = {
     login,
@@ -9,7 +8,7 @@ export const sellerActions = {
     register
 };
 
-function login(seller, remember) {
+function login(seller, remember, history) {
     return dispatch => {
         dispatch(request()); 
 
@@ -37,7 +36,7 @@ function logout() {
     return { type: sellerConstants.LOGOUT };
 }
 
-function register(seller, remember) {
+function register(seller, remember, history) {
     return dispatch => {
         dispatch(request());
 

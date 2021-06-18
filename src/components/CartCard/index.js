@@ -1,12 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Row, Col, Image, ButtonGroup, Button } from 'react-bootstrap'
 import product4 from '../../images/product4.jpeg'
 import './CartCard.css';
 import { FaTrash } from "react-icons/fa";
 
-function CartCard() {
+function CartCard(props) {
 
-    const [quantity, setQuantity] = useState(1);
+    const [quantity, setQuantity] = useState(props.qty);
+
 
 
     const quantityLimiter = (value) => {
@@ -17,9 +18,10 @@ function CartCard() {
         }
     }
 
-    const removeProduct = () => {
-        console.log("removed");
-    }
+
+    useEffect(() => {
+        setQuantity(props.qty);
+    }, [props])
 
 
     return (
@@ -30,15 +32,15 @@ function CartCard() {
                     <div
                         className="delete"
                         type="button"
-                        onClick={() => removeProduct()}
+                        onClick={() => props.removeCartItem(props.productId)}
                     >
                        <FaTrash size={22} color="white" />
                     </div>
                 </div>
             </Col>
             <Col md={{ span: 6, offset: 1 }} >
-                <p style={{ fontSize: 28, fontFamily: "Lato-Bold", marginBottom: 0 }}>Sony Xperia</p>
-                <p className="text-muted text-monospace">Sony</p>
+                <p style={{ fontSize: 28, fontFamily: "Lato-Bold", marginBottom: 0 }}>{props.productName}</p>
+                <p className="text-muted text-monospace">{props.descr}</p>
                 <Row className="d-flex align-items-center text-center m-auto">
                     <p className="text-muted text-monospace mr-2 pt-3">Quantity:</p>
                     <ButtonGroup className="mr-2" aria-label="First group">
@@ -49,7 +51,7 @@ function CartCard() {
                 </Row>
             </Col>
             <Col md={{ span: 2 }} className="text-right">
-                <p style={{ color: "black", fontSize: 25 }}>Price: ₹20000</p>
+                <p style={{ color: "black", fontSize: 25 }}>Price: ₹{props.price}</p>
             </Col>
             <span className="LineSeperator mt-3" />
         </Row>

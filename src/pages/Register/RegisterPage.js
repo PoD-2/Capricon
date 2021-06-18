@@ -4,6 +4,7 @@ import './Register.css';
 import { formValidation as validate } from '../../services';
 import { useDispatch, useSelector } from 'react-redux';
 import { userActions, alertActions } from '../../redux/actions';
+import { useHistory } from "react-router-dom";
 
 //assets import
 import RegisterPic from '../../images/buyingOnline.gif';
@@ -21,6 +22,7 @@ function RegisterPage() {
     const [submitted, setSubmitted] = useState(false);
     const [rememberChecked, setRememberChecked] = useState(false);
     const [carouselIndex, setCarouselIndex] = useState(0);
+    let history = useHistory();
     
 
     //carousel index value
@@ -85,7 +87,7 @@ function RegisterPage() {
         if (name && mobileNumber && email && password && validatePassword() && validateMobileNumber()) {
 
             const user = { "userName": name, "phoneNumber": mobileNumber, "emailId": email, "password": password };
-            dispatch(userActions.register(user, rememberChecked));
+            dispatch(userActions.register(user, rememberChecked, history));
         }
     }
 

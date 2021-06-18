@@ -5,6 +5,7 @@ import Logo from '../../images/capcricon.png';
 import { useDispatch, useSelector } from 'react-redux';
 import { userActions, alertActions } from '../../redux/actions';
 import { formValidation as validate } from '../../services';
+import { useHistory } from "react-router-dom";
 
 export default function LoginPage() {
   
@@ -12,6 +13,7 @@ export default function LoginPage() {
   const [password, setPassword] = useState("");
   const [submitted, setSubmitted] = useState(false);
   const [rememberChecked, setRememberChecked] = useState(false);
+  let history = useHistory();
 
   //redux integration
   const loggingIn = useSelector(state => state.userAuth.loading);
@@ -46,7 +48,7 @@ export default function LoginPage() {
     //dispatch only if input fields have value and also password is 8 charachters min
     if (email && password && validatePassword()) {
       const user = {"emailId": email, "password": password};
-      dispatch(userActions.login(user, rememberChecked));
+      dispatch(userActions.login(user, rememberChecked, history));
     }
   }
 

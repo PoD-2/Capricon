@@ -21,32 +21,7 @@ function SearchBar(props) {
     const [searchQuery, setSearchQuery] = useState("");
     const [isLoading, setLoading] = useState(false);
     let history = useHistory();
-    const [products, setProducts] = useState([
-        {
-            "productId": 1,
-            "productName": "SmartPhone",
-            "category": "gadgets",
-            "color": "black",
-            "price": 10000,
-            "qty": 2
-        },
-        {
-            "productId": 1,
-            "productName": "SmartPhone",
-            "category": "gadgets",
-            "color": "black",
-            "price": 10000,
-            "qty": 2
-        },
-        {
-            "productId": 1,
-            "productName": "SmartPhone",
-            "category": "gadgets",
-            "color": "black",
-            "price": 10000,
-            "qty": 2
-        }
-    ]);
+    const [products, setProducts] = useState([]);
     const [noProducts, setNoProducts] = useState(false);
     const dispatch = useDispatch();
     
@@ -105,7 +80,7 @@ function SearchBar(props) {
 
         history.push({
             pathname: '/search',
-              state: {searchTerm: value} // your data array of objects
+              state: {searchTerm: value} 
           })
     }
 

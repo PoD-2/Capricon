@@ -1,38 +1,18 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import NavBar from '../../components/NavBar';
 import AdCarousel from '../../components/AdCarousel';
 import ProductCard from '../../components/ProductCard';
 import Footer from '../../components/Footer/Footer';
-import { alertActions } from '../../redux/actions';
-import { useDispatch, useSelector } from 'react-redux';
 import './Home.css';
-import { Col, Row, Container, Alert } from 'react-bootstrap';
+import { Col, Row, Container } from 'react-bootstrap';
 
 function HomePage() {
 
 
-    const message = useSelector(state => state.alert.message);
-    const alertType = useSelector(state => state.alert.type);
-    const dispatch = useDispatch();
-
-       //clear the alert
-   useEffect(() => {
-    setTimeout(
-        function() {
-         // clear alert after 3 secomds
-         dispatch(alertActions.clear());
-        }, 3000);
-
-}, [alertType, dispatch]);
 
 
     return (
         <div>
-            {message && (
-                <Alert variant={(alertType === "alert-success") ? "success" : "danger"} >
-                    {message}
-                </Alert>
-            )}
             <NavBar />
             <div>
                 <AdCarousel />

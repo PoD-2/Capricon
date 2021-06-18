@@ -5,6 +5,7 @@ import Logo from '../../images/capcricon.png';
 import { useDispatch, useSelector } from 'react-redux';
 import { sellerActions, alertActions } from '../../redux/actions';
 import { formValidation as validate } from '../../services';
+import { useHistory } from "react-router-dom";
 
 export default function SellerLogin() {
 
@@ -12,6 +13,7 @@ export default function SellerLogin() {
     const [password, setPassword] = useState("");
     const [submitted, setSubmitted] = useState(false);
     const [rememberChecked, setRememberChecked] = useState(false);
+    let history = useHistory();
 
     //redux integration
     const loggingIn = useSelector(state => state.sellerAuth.loading);
@@ -46,7 +48,7 @@ export default function SellerLogin() {
         //dispatch only if input fields have value and also password is 8 charachters min
         if (companyEmail && password && validatePassword()) {
             const seller = { "emailId": companyEmail, "password": password };
-            dispatch(sellerActions.login(seller, rememberChecked));
+            dispatch(sellerActions.login(seller, rememberChecked, history));
         }
     }
 

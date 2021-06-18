@@ -1,7 +1,6 @@
 import { userConstants } from '../constants';
 import { userService } from '../../services/';
 import { alertActions } from './';
-import { history } from '../../helpers/history';
 
 export const userActions = {
     login,
@@ -9,7 +8,7 @@ export const userActions = {
     register
 };
 
-function login(user, remember) {
+function login(user, remember, history) {
     return dispatch => {
         dispatch(request()); 
 
@@ -37,7 +36,7 @@ function logout() {
     return { type: userConstants.LOGOUT };
 }
 
-function register(user, remember) {
+function register(user, remember, history) {
     return dispatch => {
         dispatch(request());
 

@@ -1,8 +1,8 @@
-import React from 'react';
-import { Navbar, Nav, NavDropdown, Form, Button, } from 'react-bootstrap';
+import React, {useEffect} from 'react';
+import { Navbar, Nav, NavDropdown, Form, Button, Alert } from 'react-bootstrap';
 import Logo from '../../images/logo.svg';
 import { useDispatch, useSelector } from 'react-redux';
-import { userActions } from '../../redux/actions';
+import { userActions, alertActions } from '../../redux/actions';
 import { RiLoginCircleFill } from "react-icons/ri";
 import { FaShoppingCart, FaHeart } from "react-icons/fa";
 import SearchBar from '../SearchBar';
@@ -19,9 +19,28 @@ function NavBar() {
 
   }
 
+    const message = useSelector(state => state.alert.message);
+    const alertType = useSelector(state => state.alert.type);
+
+         //clear the alert
+         useEffect(() => {
+          setTimeout(
+              function() {
+               // clear alert after 3 secomds
+               dispatch(alertActions.clear());
+              }, 3000);
+      
+      }, [alertType, dispatch]);
+
 
 
   return (
+    <>
+    {message && (
+      <Alert variant={(alertType === "alert-success") ? "success" : "danger"} >
+          {message}
+      </Alert>
+  )}
     <Navbar collapseOnSelect bg="light" expand="xl" fixed="top" className="position-sticky px-md-5 shadow-sm mb-5 rounded">
       <Navbar.Brand href="/">
         <img
@@ -47,7 +66,7 @@ function NavBar() {
           {loggedIn ? (
             <NavDropdown title={user.userName} id="basic-nav-dropdown">
               <NavDropdown.Item href="#action/3.1">My Profile</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.2">My Orders</NavDropdown.Item>
+              <NavDropdown.Item href="/orders">My Orders</NavDropdown.Item>
               <NavDropdown.Item onClick={() => handleLogout()}>Log out</NavDropdown.Item>
               <NavDropdown.Divider />
               <NavDropdown.Item href="/seller/login">Sell on Capricon</NavDropdown.Item>
@@ -69,7 +88,7 @@ function NavBar() {
         </Nav>
       </Navbar.Collapse>
     </Navbar>
-
+</>
   )
 }
 
