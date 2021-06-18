@@ -11,6 +11,7 @@ function CartPage() {
     const cartItems = useSelector(state => state.userCart.cartItems);
     const userId = useSelector(state => state.userAuth.user.userId);
     const [totalPrice, setTotalPrice] = useState(0);
+    const [quantity, setQuantity] = useState(1);
 
 
     useEffect(() => {
@@ -18,7 +19,7 @@ function CartPage() {
     }, [dispatch, userId]);
 
 
-    const findTotalCartPrice = arr => arr.reduce((sum, { price, qty }) => sum + price * qty, 0);
+    const findTotalCartPrice = arr => arr.reduce((sum, { price }) => sum + price * quantity, 0);
 
     useEffect(() => {
         cartItems && cartItems.length !== 0 && (
@@ -48,8 +49,10 @@ function CartPage() {
                             productName={item.productName}
                             descr={item.descr}
                             price={item.price}
-                            qty={item.qty}
+                            availableQty={item.qty}
                             removeCartItem={handleRemoveCartItem}
+                            quantity={quantity}
+                            setQuantity={setQuantity}
                             />
                         ))
                     )}

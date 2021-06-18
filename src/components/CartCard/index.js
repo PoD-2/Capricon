@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { Row, Col, Image, ButtonGroup, Button } from 'react-bootstrap'
 import product4 from '../../images/product4.jpeg'
 import './CartCard.css';
@@ -6,22 +6,17 @@ import { FaTrash } from "react-icons/fa";
 
 function CartCard(props) {
 
-    const [quantity, setQuantity] = useState(props.qty);
-
-
 
     const quantityLimiter = (value) => {
-        if (value < 1) {
-            setQuantity(1);
+        if(value < 1) {
+            props.setQuantity(1);
+        } else if(value > props.availableQty){
+            props.setQuantity(props.availableQty)
         } else {
-            setQuantity(value);
+            props.setQuantity(value);
         }
     }
 
-
-    useEffect(() => {
-        setQuantity(props.qty);
-    }, [props])
 
 
     return (
@@ -44,9 +39,9 @@ function CartCard(props) {
                 <Row className="d-flex align-items-center text-center m-auto">
                     <p className="text-muted text-monospace mr-2 pt-3">Quantity:</p>
                     <ButtonGroup className="mr-2" aria-label="First group">
-                        <Button variant="dark" onClick={() => setQuantity(quantity - 1)} disabled={quantity === 1 ? true : false}>-</Button>
-                        <input maxLength={3} className="text-center" type="number" value={quantity} onChange={(e) => quantityLimiter(e.target.value)} style={{ width: 40 }} />
-                        <Button variant="dark" onClick={() => setQuantity(quantity + 1)}>+</Button>
+                        <Button variant="dark" onClick={() => props.setQuantity(props.quantity - 1)} disabled={props.quantity === 1 ? true : false}>-</Button>
+                        <input maxLength={3} className="text-center" type="number" value={props.quantity} onChange={(e) => quantityLimiter(e.target.value)} style={{ width: 40 }} />
+                        <Button variant="dark" onClick={() => props.setQuantity(props.quantity + 1)} disabled={props.quantity >= props.props.availableQty ? true : false}>+</Button>
                     </ButtonGroup>
                 </Row>
             </Col>
