@@ -39,8 +39,6 @@ function ProductResults(props) {
 
 
     const handleClick = (value) => {
-        if (!value || value.trim() === "") return;
-
         history.push({
             pathname: '/Product',
               state: {productId: value} 
