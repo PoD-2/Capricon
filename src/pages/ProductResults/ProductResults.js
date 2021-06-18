@@ -29,16 +29,18 @@ function ProductResults(props) {
             products => {
                 if (products && products.length === 0) setNoProducts(true);
                 setProducts(products);
+                setIsLoading(false);
             },
             error => {
                 dispatch(alertActions.error(error.toString()));
-            });
+                setIsLoading(false);
+            })
     }, [dispatch, searchTerm]);
 
 
     const handleClick = (value) => {
         if (!value || value.trim() === "") return;
-        
+
         history.push({
             pathname: '/Product',
               state: {productId: value} 
