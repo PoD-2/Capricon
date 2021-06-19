@@ -3,7 +3,7 @@ import { Button, Form, Alert, Col, Container } from "react-bootstrap";
 import "./SellerRegister.css";
 import Logo from '../../images/capcricon.png';
 import { useDispatch, useSelector } from 'react-redux';
-import { sellerActions, alertActions } from '../../redux/actions';
+import { sellerAuthActions, alertActions } from '../../redux/actions';
 import { formValidation as validate } from '../../services';
 import { useHistory } from "react-router-dom";
 
@@ -116,7 +116,7 @@ export default function SellerRegister() {
         //dispatch only if input fields have value and also password is 8 charachters min
         if (checkAllValidity() && submitted) {
             const seller = { sellerName, companyName, "emailId": companyEmail, csEmailId, password, phoneNumber, csPhoneNumber, "address": {"line": address, city, pincode, state, country}};
-            dispatch(sellerActions.register(seller, rememberChecked, history));
+            dispatch(sellerAuthActions.register(seller, rememberChecked, history));
 
         }
     }

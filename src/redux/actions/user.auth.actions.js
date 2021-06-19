@@ -1,8 +1,8 @@
-import { userConstants } from '../constants';
-import { userAuthService } from '../../services/';
-import { alertActions } from './';
+import { userAuthConstants } from '../constants';
+import { userAuthService } from '../../services';
+import { alertActions } from '.';
 
-export const userActions = {
+export const userAuthActions = {
     login,
     logout,
     register
@@ -26,14 +26,14 @@ function login(user, remember, history) {
             );
     };
 
-    function request(user) { return { type: userConstants.LOGIN_REQUEST, user } }
-    function success(user) { return { type: userConstants.LOGIN_SUCCESS, user } }
-    function failure(error) { return { type: userConstants.LOGIN_FAILURE, error } }
+    function request(user) { return { type: userAuthConstants.LOGIN_REQUEST, user } }
+    function success(user) { return { type: userAuthConstants.LOGIN_SUCCESS, user } }
+    function failure(error) { return { type: userAuthConstants.LOGIN_FAILURE, error } }
 }
 
 function logout() {
     userAuthService.logout();
-    return { type: userConstants.LOGOUT };
+    return { type: userAuthConstants.LOGOUT };
 }
 
 function register(user, remember, history) {
@@ -54,9 +54,9 @@ function register(user, remember, history) {
             );
     };
 
-    function request(user) { return { type: userConstants.REGISTER_REQUEST, user } }
-    function success(user) { return { type: userConstants.REGISTER_SUCCESS, user } }
-    function failure(error) { return { type: userConstants.REGISTER_FAILURE, error } }
+    function request(user) { return { type: userAuthConstants.REGISTER_REQUEST, user } }
+    function success(user) { return { type: userAuthConstants.REGISTER_SUCCESS, user } }
+    function failure(error) { return { type: userAuthConstants.REGISTER_FAILURE, error } }
 }
 
 

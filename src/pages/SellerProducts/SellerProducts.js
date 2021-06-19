@@ -1,11 +1,20 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Row, Col, Button } from 'react-bootstrap'
 import SellerProductCard from '../../components/SellerProductCard'
 import ProductUpload from '../../components/ProductUpload';
+import { sellerProductActions } from '../../redux/actions/seller.product.actions';
+import { useDispatch, useSelector } from 'react-redux';
 
 function SellerProducts() {
 
     const [showModal, setShowModel] = useState(false);
+    const dispatch = useDispatch();
+    const sellerId = useSelector(state => state.sellerAuth.seller.sellerId);
+    const products = useSelector(state => state.sellerProducts.products);
+
+    useEffect(() => {
+        dispatch(sellerProductActions.view(sellerId));
+    }, [dispatch, sellerId]);
 
 
     const closeModal = () => {
@@ -29,25 +38,21 @@ function SellerProducts() {
                 closeModal={closeModal}
             />
             <div>
-                <Row className="">
-                    <Col>
-                        <SellerProductCard />
-                    </Col>
-                    <Col>
-                        <SellerProductCard />
-                    </Col>
-                    <Col>
-                        <SellerProductCard />
-                    </Col>
-                    <Col>
-                        <SellerProductCard />
-                    </Col>
-                    <Col>
-                        <SellerProductCard />
-                    </Col>
-                    <Col>
-                        <SellerProductCard />
-                    </Col>
+                <Row>
+                {products && products.length !== 0 && (
+                    products.map((item) => (
+                        <Col>
+                            <SellerProductCard 
+                            productId={item.productId}
+                            productName={item.productName}
+                            descr={item.descr}
+                            price={item.price}
+                            quantity={item.qty}
+                            images={item.images}
+                            />
+                            </Col>
+                        ))
+                    )}
                 </Row>
             </div>
 

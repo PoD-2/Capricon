@@ -1,8 +1,8 @@
-import { sellerConstants } from '../constants';
-import { sellerAuthService } from '../../services/';
-import { alertActions } from './';
+import { sellerAuthConstants } from '../constants';
+import { sellerAuthService } from '../../services';
+import { alertActions } from '.';
 
-export const sellerActions = {
+export const sellerAuthActions = {
     login,
     logout,
     register
@@ -26,14 +26,14 @@ function login(seller, remember, history) {
             );
     };
 
-    function request(user) { return { type: sellerConstants.LOGIN_REQUEST, user } }
-    function success(user) { return { type: sellerConstants.LOGIN_SUCCESS, user } }
-    function failure(error) { return { type: sellerConstants.LOGIN_FAILURE, error } }
+    function request(user) { return { type: sellerAuthConstants.LOGIN_REQUEST, user } }
+    function success(user) { return { type: sellerAuthConstants.LOGIN_SUCCESS, user } }
+    function failure(error) { return { type: sellerAuthConstants.LOGIN_FAILURE, error } }
 }
 
 function logout() {
     sellerAuthService.logout();
-    return { type: sellerConstants.LOGOUT };
+    return { type: sellerAuthConstants.LOGOUT };
 }
 
 function register(seller, remember, history) {
@@ -54,9 +54,9 @@ function register(seller, remember, history) {
             );
     };
 
-    function request(user) { return { type: sellerConstants.REGISTER_REQUEST, user } }
-    function success(user) { return { type: sellerConstants.REGISTER_SUCCESS, user } }
-    function failure(error) { return { type: sellerConstants.REGISTER_FAILURE, error } }
+    function request(user) { return { type: sellerAuthConstants.REGISTER_REQUEST, user } }
+    function success(user) { return { type: sellerAuthConstants.REGISTER_SUCCESS, user } }
+    function failure(error) { return { type: sellerAuthConstants.REGISTER_FAILURE, error } }
 }
 
 

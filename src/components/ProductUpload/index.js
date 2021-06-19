@@ -2,8 +2,7 @@ import React, { useState, useRef } from 'react'
 import { Col, Button, Modal, Form, ProgressBar } from 'react-bootstrap';
 import { formValidation as validate } from '../../services';
 import { useDispatch, useSelector } from 'react-redux';
-import {sellerService} from '../../services';
-import { alertActions } from '../../redux/actions/';
+import { sellerProductActions } from '../../redux/actions/seller.product.actions';
 
 function ProductUpload(props) {
 
@@ -81,29 +80,27 @@ function ProductUpload(props) {
         
         if (submitted && checkAllValidity()) {
             setIsLoading(true);
-            var fd = new FormData();
-            fd.append('productName', productName);
-            fd.append('category', category);
-            fd.append('color', color);
-            fd.append('price', price);
-            fd.append('qty', quantity);
-            fd.append('descr', description);
-            fd.append('file', productImages);
+            var data = new FormData();
+             
+            data.append('productName', productName);
+            data.append('category', category);
+            data.append('color', color);
+            data.append('price', price);
+            data.append('qty', quantity);
+            data.append('descr', description);
+            for (let i = 0; i < productImages.length; i++) {
+                data.append('file', productImages[i]);
+            }
 
-            sellerService.addProduct(fd, sellerId, setProgress)
+            dispatch(sellerProductActions.add(data, sellerId, setProgress))
             .then(
                 res => { 
-                        console.log(res);
                         setIsLoading(false);
                         hideModal();
-                        dispatch(alertActions.success("product added successfully"));
-                   
                 },
                 error => {
-                    console.log(error);
                     setIsLoading(false);
                     hideModal();
-                    dispatch(alertActions.error(error.toString()));
                 }
             );
             
@@ -117,7 +114,6 @@ function ProductUpload(props) {
     //to handle image upload
     const imageFileHandler = (e) => {
         setProductImages(e.target.files);
-        console.log(e.target.value);
     }
 
 
@@ -149,7 +145,9 @@ function ProductUpload(props) {
                 <Modal.Title>Add product</Modal.Title>
             </Modal.Header>
             <Modal.Body>
+            {isLoading && (
                 <ProgressBar className="mb-3" striped variant="success" now={progress} />
+                )}
                 <Form>
                     <Form.Row>
                         <Form.Group as={Col} md={6} controlId="formGridName">
@@ -263,7 +261,7 @@ function ProductUpload(props) {
             </Modal.Body>
             <Modal.Footer>
                 <Button variant="secondary" onClick={hideModal}>Close</Button>
-                <Button variant="primary" onClick={handleProductSubmit} disabled={isLoading ? true : false}>Add product</Button>
+                <Button variant="primary" onClick={() => handleProductSubmit()} disabled={isLoading ? true : false}>Add product</Button>
             </Modal.Footer>
         </Modal>
     )

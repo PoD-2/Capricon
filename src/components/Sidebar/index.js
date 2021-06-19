@@ -7,14 +7,14 @@ import { HiOutlineClipboardList, HiOutlineClipboardCheck } from "react-icons/hi"
 import { Image, Nav, Button } from 'react-bootstrap';
 import './Sidebar.css';
 import { useDispatch } from 'react-redux';
-import { sellerActions } from '../../redux/actions';
+import { sellerAuthActions } from '../../redux/actions';
 
 function Sidebar() {
 
     const dispatch = useDispatch();
 
     const handleLogout = () => {
-        dispatch(sellerActions.logout());
+        dispatch(sellerAuthActions.logout());
     }
 
     const [selectedMenu, setSelectedMenu] = useState("");

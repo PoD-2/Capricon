@@ -2,7 +2,7 @@ import React, {useEffect} from 'react';
 import { Navbar, Nav, NavDropdown, Form, Button, Alert } from 'react-bootstrap';
 import Logo from '../../images/logo.svg';
 import { useDispatch, useSelector } from 'react-redux';
-import { userActions, alertActions } from '../../redux/actions';
+import { userAuthActions, alertActions } from '../../redux/actions';
 import { RiLoginCircleFill } from "react-icons/ri";
 import { FaShoppingCart, FaHeart } from "react-icons/fa";
 import SearchBar from '../SearchBar';
@@ -15,7 +15,7 @@ function NavBar() {
 
   const handleLogout = () => {
 
-    dispatch(userActions.logout());
+    dispatch(userAuthActions.logout());
 
   }
 

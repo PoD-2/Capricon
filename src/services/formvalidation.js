@@ -85,7 +85,7 @@ function zipcodeValidation(submitted, zipCode) {
 
 function productImageValidation(submitted, imageFiles) {
     if(submitted){
-      return (imageFiles.length < 5) ? true : false;
+      return (imageFiles.length < 5 && imageFiles.length >= 2) ? true : false;
    } else {
        return true
    }

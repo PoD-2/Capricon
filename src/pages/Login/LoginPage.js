@@ -3,7 +3,7 @@ import { Button, Form, Alert } from "react-bootstrap";
 import "./Login.css";
 import Logo from '../../images/capcricon.png';
 import { useDispatch, useSelector } from 'react-redux';
-import { userActions, alertActions } from '../../redux/actions';
+import { userAuthActions, alertActions } from '../../redux/actions';
 import { formValidation as validate } from '../../services';
 import { useHistory } from "react-router-dom";
 
@@ -48,7 +48,7 @@ export default function LoginPage() {
     //dispatch only if input fields have value and also password is 8 charachters min
     if (email && password && validatePassword()) {
       const user = {"emailId": email, "password": password};
-      dispatch(userActions.login(user, rememberChecked, history));
+      dispatch(userAuthActions.login(user, rememberChecked, history));
     }
   }
 

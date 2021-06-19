@@ -3,7 +3,7 @@ import { Button, Form, Alert } from "react-bootstrap";
 import "./SellerLogin.css";
 import Logo from '../../images/capcricon.png';
 import { useDispatch, useSelector } from 'react-redux';
-import { sellerActions, alertActions } from '../../redux/actions';
+import { sellerAuthActions, alertActions } from '../../redux/actions';
 import { formValidation as validate } from '../../services';
 import { useHistory } from "react-router-dom";
 
@@ -48,7 +48,7 @@ export default function SellerLogin() {
         //dispatch only if input fields have value and also password is 8 charachters min
         if (companyEmail && password && validatePassword()) {
             const seller = { "emailId": companyEmail, "password": password };
-            dispatch(sellerActions.login(seller, rememberChecked, history));
+            dispatch(sellerAuthActions.login(seller, rememberChecked, history));
         }
     }
 

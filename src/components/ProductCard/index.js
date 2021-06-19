@@ -56,7 +56,7 @@ function ProductCard() {
             </a>
             <p className="text-muted text-monospace mb-1" style={{ fontSize: 20 }}>Nike Shoes</p>
             <div className="d-flex align-items-center">
-            <p className="lead" style={{ fontSize: 32, flex: 1, paddingTop: 15}}>$299</p>
+            <p className="lead" style={{ fontSize: 32, flex: 1, paddingTop: 15}}>₹299</p>
 
             <Button style={{flex: 1, borderRadius: 100, maxWidth: 60, margin: 10}} className="py-3" variant="dark">
             <IoBagAdd size={22} />

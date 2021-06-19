@@ -1,21 +1,33 @@
 import React from 'react'
-import { Card, ListGroup, ListGroupItem, Button } from 'react-bootstrap';
-import ProductImage from '../../images/shoeImg.jpeg'
+import { Card, ListGroup, ListGroupItem, Button, Carousel, Image } from 'react-bootstrap';
 
-function SellerProductCard() {
+function SellerProductCard(props) {
   return (
     <div>
       <Card style={{ width: '20rem', marginBottom: 30 }}>
-        <Card.Img variant="top" src={ProductImage} />
+        <Carousel interval={null}>
+        {props.images && props.images.length !== 0 && (
+          props.images.map((item) => (
+            <Carousel.Item>
+              <Image
+                src={item.fileUrl}
+                alt="First slide"
+                fluid
+
+              />
+            </Carousel.Item>
+                      ))
+                    )}
+          </Carousel>
         <Card.Body>
-          <Card.Title>Jordan Delta 2</Card.Title>
+          <Card.Title>{props.productName}</Card.Title>
           <Card.Text>
-          The Jordan Delta 2 offers a fresh, fearless take on the features you want
+          {props.descr}
           </Card.Text>
         </Card.Body>
         <ListGroup className="list-group-flush">
-          <ListGroupItem>Price: $29</ListGroupItem>
-          <ListGroupItem>Current quantity: 24</ListGroupItem>
+          <ListGroupItem>Price: ₹{props.price}</ListGroupItem>
+          <ListGroupItem>Available quantity: {props.quantity}</ListGroupItem>
         </ListGroup>
         <Card.Body>
         <Button className="mr-3" variant="danger">Delete Product</Button>

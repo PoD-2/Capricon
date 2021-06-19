@@ -3,7 +3,7 @@ import { Button, Form, Container, Row, Col, Alert, Carousel } from "react-bootst
 import './Register.css';
 import { formValidation as validate } from '../../services';
 import { useDispatch, useSelector } from 'react-redux';
-import { userActions, alertActions } from '../../redux/actions';
+import { userAuthActions, alertActions } from '../../redux/actions';
 import { useHistory } from "react-router-dom";
 
 //assets import
@@ -87,7 +87,7 @@ function RegisterPage() {
         if (name && mobileNumber && email && password && validatePassword() && validateMobileNumber()) {
 
             const user = { "userName": name, "phoneNumber": mobileNumber, "emailId": email, "password": password };
-            dispatch(userActions.register(user, rememberChecked, history));
+            dispatch(userAuthActions.register(user, rememberChecked, history));
         }
     }
 

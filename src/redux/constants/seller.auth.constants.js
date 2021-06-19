@@ -1,4 +1,4 @@
-export const sellerConstants = {
+export const sellerAuthConstants = {
     REGISTER_REQUEST: 'SELLERS_REGISTER_REQUEST',
     REGISTER_SUCCESS: 'SELLERS_REGISTER_SUCCESS',
     REGISTER_FAILURE: 'SELLERS_REGISTER_FAILURE',

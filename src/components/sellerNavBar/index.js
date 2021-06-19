@@ -5,7 +5,7 @@ import { RiDashboardLine, RiLogoutCircleLine } from "react-icons/ri";
 import { FiCodesandbox } from "react-icons/fi";
 import { HiOutlineClipboardList, HiOutlineClipboardCheck } from "react-icons/hi";
 import { useDispatch, useSelector } from 'react-redux';
-import { sellerActions, alertActions } from '../../redux/actions';
+import { sellerAuthActions, alertActions } from '../../redux/actions';
 
 
 function SellerNavBar() {
@@ -15,7 +15,7 @@ function SellerNavBar() {
     const alertType = useSelector(state => state.alert.type);
 
     const handleLogout = () => {
-        dispatch(sellerActions.logout());
+        dispatch(sellerAuthActions.logout());
     }
 
     //clear the alert

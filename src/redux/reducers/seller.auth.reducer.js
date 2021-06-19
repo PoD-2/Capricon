@@ -1,4 +1,4 @@
-import { sellerConstants } from '../constants';
+import { sellerAuthConstants } from '../constants';
 
 let seller = JSON.parse(localStorage.getItem('seller'));
 let tempSeller = JSON.parse(sessionStorage.getItem('seller'));
@@ -6,35 +6,35 @@ const initialState = tempSeller ? { loggedIn: true, seller: tempSeller } : selle
 
 export function sellerAuth(state = initialState, action) {
     switch (action.type) {
-        case sellerConstants.LOGIN_REQUEST:
+        case sellerAuthConstants.LOGIN_REQUEST:
             return {
                 ...state,
                 loading: true
             };
-        case sellerConstants.LOGIN_SUCCESS:
+        case sellerAuthConstants.LOGIN_SUCCESS:
             return {
                 ...state,
                 loading: false,
                 loggedIn: true,
                 seller: action.seller
             };
-        case sellerConstants.LOGIN_FAILURE:
+        case sellerAuthConstants.LOGIN_FAILURE:
             return {};
-        case sellerConstants.LOGOUT:
+        case sellerAuthConstants.LOGOUT:
             return {};
-        case sellerConstants.REGISTER_REQUEST:
+        case sellerAuthConstants.REGISTER_REQUEST:
             return {
                     ...state,
                     loading: true
                 };
-        case sellerConstants.REGISTER_SUCCESS:
+        case sellerAuthConstants.REGISTER_SUCCESS:
             return {
                    ...state,
                    loading: false,
                    loggedIn: true,
                    seller: action.seller
                 };
-        case sellerConstants.REGISTER_FAILURE:
+        case sellerAuthConstants.REGISTER_FAILURE:
             return {}; 
         default:
             return state
