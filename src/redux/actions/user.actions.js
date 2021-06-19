@@ -1,5 +1,5 @@
 import { userConstants } from '../constants';
-import { userService } from '../../services/';
+import { userAuthService } from '../../services/';
 import { alertActions } from './';
 
 export const userActions = {
@@ -12,7 +12,7 @@ function login(user, remember, history) {
     return dispatch => {
         dispatch(request()); 
 
-        userService.login(user, remember)
+        userAuthService.login(user, remember)
             .then(
                 user => { 
                         dispatch(success(user));
@@ -32,7 +32,7 @@ function login(user, remember, history) {
 }
 
 function logout() {
-    userService.logout();
+    userAuthService.logout();
     return { type: userConstants.LOGOUT };
 }
 
@@ -40,7 +40,7 @@ function register(user, remember, history) {
     return dispatch => {
         dispatch(request());
 
-        userService.register(user,remember)
+        userAuthService.register(user,remember)
             .then(
                 user => { 
                     dispatch(success(user));

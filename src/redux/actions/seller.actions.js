@@ -1,5 +1,5 @@
 import { sellerConstants } from '../constants';
-import { sellerService } from '../../services/';
+import { sellerAuthService } from '../../services/';
 import { alertActions } from './';
 
 export const sellerActions = {
@@ -12,7 +12,7 @@ function login(seller, remember, history) {
     return dispatch => {
         dispatch(request()); 
 
-        sellerService.login(seller, remember)
+        sellerAuthService.login(seller, remember)
             .then(
                 seller => { 
                         dispatch(success(seller));
@@ -32,7 +32,7 @@ function login(seller, remember, history) {
 }
 
 function logout() {
-    sellerService.logout();
+    sellerAuthService.logout();
     return { type: sellerConstants.LOGOUT };
 }
 
@@ -40,7 +40,7 @@ function register(seller, remember, history) {
     return dispatch => {
         dispatch(request());
 
-        sellerService.register(seller,remember)
+        sellerAuthService.register(seller,remember)
             .then(
                 seller => { 
                     dispatch(success(seller));

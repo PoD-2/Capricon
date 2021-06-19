@@ -2,7 +2,7 @@
 const axios = require('axios');
 const baseURL = "http://localhost:8080"
 
-export const userService = {
+export const userAuthService = {
     login,
     logout,
     register

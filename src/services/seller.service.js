@@ -3,56 +3,25 @@ const axios = require('axios');
 const baseURL = "http://localhost:8080"
 
 export const sellerService = {
-    login,
-    logout,
-    register
+    addProduct
 };
 
 
 
-function login(seller, remember) {
+function addProduct(product, sellerId, setProgress) {
   
-    return axios.post(`${baseURL}/seller/login`, seller)
-    .then(seller => {
-        
-        if(remember){
-            localStorage.setItem('seller', JSON.stringify(seller.data));
-        } else {
-            sessionStorage.setItem("seller", JSON.stringify(seller.data));
+    return axios.post(`${baseURL}/seller/${sellerId}/addProduct`, product, {
+        onUploadProgress: ProgressEvent => {
+            setProgress(Math.round(ProgressEvent.loaded / ProgressEvent.total * 100));
         }
+    })
+    .then(res => {
         
-        return seller.data;
+        return res.data;
     })
     .catch(err => {
         return Promise.reject(err.response.data.message);
     })
 
-}
-
-
-function logout() {
-    // remove user from local storage to log user out
-    localStorage.removeItem('seller');
-}
-
-
-
-function register(seller, remember) {
-  
-        return axios.post(`${baseURL}/seller/register`, seller)
-        .then(seller => {
-
-            if(remember){
-                localStorage.setItem('seller', JSON.stringify(seller.data));
-            } else {
-                sessionStorage.setItem('seller', JSON.stringify(seller.data));
-            }
-
-            return seller.data;
-        })
-        .catch(err => {
-            return Promise.reject(err.response.data.message);
-        })
-        
 }
 
