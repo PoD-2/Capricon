@@ -41,7 +41,7 @@ function CartCard(props) {
                     <ButtonGroup className="mr-2" aria-label="First group">
                         <Button variant="dark" onClick={() => props.setQuantity(props.quantity - 1)} disabled={props.quantity === 1 ? true : false}>-</Button>
                         <input maxLength={3} className="text-center" type="number" value={props.quantity} onChange={(e) => quantityLimiter(e.target.value)} style={{ width: 40 }} />
-                        <Button variant="dark" onClick={() => props.setQuantity(props.quantity + 1)} disabled={props.quantity >= props.props.availableQty ? true : false}>+</Button>
+                        <Button variant="dark" onClick={() => props.setQuantity(props.quantity + 1)} disabled={props.quantity >= props.availableQty ? true : false}>+</Button>
                     </ButtonGroup>
                 </Row>
             </Col>

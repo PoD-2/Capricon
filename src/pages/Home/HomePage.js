@@ -6,28 +6,48 @@ import Footer from '../../components/Footer/Footer';
 import './Home.css';
 import { Col, Row, Container } from 'react-bootstrap';
 import { homeService } from '../../services';
+import { alertActions, cartActions } from '../../redux/actions';
+import { useDispatch, useSelector } from 'react-redux';
+import { useHistory } from "react-router-dom";
 
 function HomePage() {
 
-    const [category, setCategory] = useState([]);
+    const [categories, setCategories] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
+    const user = useSelector(state => state.userAuth.user);
+    const dispatch = useDispatch();
+    let history = useHistory();
 
 
     useEffect(() => {
         setIsLoading(true);
-        homeService.viewCategory("cosmetics")
+        homeService.viewCategory(["cosmetics", "fashion", "home appliances"])
             .then(
-                products => {
-                    setCategory(products)
+                categories => {
+                    setCategories(categories)
                     setIsLoading(false);
 
                 },
                 error => {
-                    console.log(error);
+                    dispatch(alertActions.error(error.toString()));
                     setIsLoading(false);
                 }
             );
-    }, [])
+    }, [dispatch]);
+
+    const handleCartButton = (productId) => {
+        dispatch(cartActions.add(user.userId, productId, history));
+    }
+
+    const handleProductClick = (productId) => {
+        history.push({
+            pathname: '/Product',
+              state: {productId: productId} 
+          })
+    }
+
+
+    console.log("cate" + categories);
 
 
 
@@ -41,82 +61,37 @@ function HomePage() {
                 <div>
                     <AdCarousel />
                     <Container fluid className="px-5">
-                        <h3 className="mt-5 mb-4" style={{ fontFamily: "Lato-Regular", fontSize: 45 }}>Deals of the day</h3>
-                        <Row>
-                            {category && category.length !== 0 && (
-                                category.map((item) => {
-                                    return(
-                                        <Col>
-                                            <div className="d-flex justify-content-left " style={{ height: 350 }}>
-                                                <ProductCard
-                                                productName={item.productName}
-                                                category={item.category}
-                                                price={item.price}
-                                                images={item.images}
-                                                />
-                                            </div>
-                                        </Col>
-                                    )
-                                })
-                            )}
-                        </Row>
-                        <h3 className="mt-5 mb-3 display-4">Home Appliances</h3>
-                        <Row>
-                            {category && category.length !== 0 && (
-                                category.map((item) => {
-                                    return(
-                                        <Col>
-                                            <div className="d-flex justify-content-left " style={{ height: 350 }}>
-                                                <ProductCard
-                                                productName={item.productName}
-                                                category={item.category}
-                                                price={item.price}
-                                                images={item.images}
-                                                />
-                                            </div>
-                                        </Col>
-                                    )
-                                })
-                            )}
-                        </Row>
-                        <h3 className="mt-5 mb-3 display-4">Home Appliances</h3>
-                        <Row>
-                            {category && category.length !== 0 && (
-                                category.map((item) => {
-                                    return(
-                                        <Col>
-                                            <div className="d-flex justify-content-left " style={{ height: 350 }}>
-                                                <ProductCard
-                                                productName={item.productName}
-                                                category={item.category}
-                                                price={item.price}
-                                                images={item.images}
-                                                />
-                                            </div>
-                                        </Col>
-                                    )
-                                })
-                            )}
-                        </Row>
-                        <h3 className="mt-5 mb-5 display-4">Home Appliances</h3>
-                        <Row>
-                            {category && category.length !== 0 && (
-                                category.map((item) => {
-                                    return(
-                                        <Col>
-                                            <div className="d-flex justify-content-left " style={{ height: 350 }}>
-                                                <ProductCard
-                                                productName={item.productName}
-                                                category={item.category}
-                                                price={item.price}
-                                                images={item.images}
-                                                />
-                                            </div>
-                                        </Col>
-                                    )
-                                })
-                            )}
-                        </Row>
+                        {categories && categories.length !== 0 && (
+                            categories.map((category) => {
+                               return( 
+                                   <>
+                                    <h3 className="mt-5 mb-4" style={{ fontFamily: "Lato-Regular", fontSize: 45 }}>{category[0].category}</h3>
+                                    <Row>
+                                        {category && category.length !== 0 && (
+                                            category.map((item) => {
+                                                return (
+                                                    <Col>
+                                                        <div className="d-flex justify-content-left " style={{ height: 350 }}>
+                                                            <ProductCard
+                                                                productId={item.productId}
+                                                                productName={item.productName}
+                                                                category={item.category}
+                                                                price={item.price}
+                                                                images={item.images}
+                                                                handleCartButton={handleCartButton}
+                                                                handleProductClick={handleProductClick}
+                                                            />
+                                                        </div>
+                                                    </Col>
+                                                )
+                                            })
+                                        )}
+                                    </Row>
+                                </>
+                               )
+                            })
+                        )}
+
                     </Container>
                     <Footer />
                 </div>

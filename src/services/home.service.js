@@ -8,15 +8,21 @@ export const homeService = {
 
 
 
-function viewCategory(category) {
-  
-    return axios.get(`${baseURL}/product/home?category=${category}`)
-    .then(response => {
-        return response.data;
+function viewCategory(categories) {
+
+
+    const request = categories.map(category => {
+        return axios.get(`${baseURL}/product/home?category=${category}`);
     })
-    .catch(err => {
-        return Promise.reject(err.response.data.message);
-    })
+
+
+    return axios.all(request)
+        .then(response => {
+            return response.data;
+        })
+        .catch(err => {
+            return Promise.reject(err.response.data.message);
+        })
 
 }
 
