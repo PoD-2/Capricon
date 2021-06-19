@@ -12,7 +12,7 @@ function SellerProductCard(props) {
               <Image
                 src={item.fileUrl}
                 alt="First slide"
-                fluid
+                style={{height: 280, width: '100%'}}
 
               />
             </Carousel.Item>

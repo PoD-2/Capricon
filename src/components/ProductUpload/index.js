@@ -93,16 +93,10 @@ function ProductUpload(props) {
             }
 
             dispatch(sellerProductActions.add(data, sellerId, setProgress))
-            .then(
-                res => { 
-                        setIsLoading(false);
-                        hideModal();
-                },
-                error => {
-                    setIsLoading(false);
-                    hideModal();
-                }
-            );
+            .then(() => {
+                setIsLoading(false);
+                hideModal();
+            });
             
 
         }

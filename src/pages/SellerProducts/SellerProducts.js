@@ -40,7 +40,7 @@ function SellerProducts() {
             <div>
                 <Row>
                 {products && products.length !== 0 && (
-                    products.map((item) => (
+                    products.reverse().map((item) => (
                         <Col>
                             <SellerProductCard 
                             productId={item.productId}
