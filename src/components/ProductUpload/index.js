@@ -17,7 +17,7 @@ function ProductUpload(props) {
     const [productImages, setProductImages] = useState([]);
     const [submitted, setSubmitted] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
-    const [progress, setProgress] = useState();
+    const [progress, setProgress] = useState(0);
     const dispatch = useDispatch();
 
     //reference to input type file
