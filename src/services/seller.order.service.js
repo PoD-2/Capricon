@@ -2,21 +2,17 @@
 const axios = require('axios');
 const baseURL = "http://localhost:8080"
 
-export const sellerProductService = {
-    add,
-    view,
-    changeQuantity
+export const sellerOrderService = {
+    viewOrderHistory,
+    viewOrderStatus,
+    changeOrderStatus
 };
 
 
 
-function add(product, sellerId, setProgress) {
+function viewOrderHistory(sellerId) {
   
-    return axios.post(`${baseURL}/seller/${sellerId}/addProduct`, product, {
-        onUploadProgress: ProgressEvent => {
-            setProgress(Math.round(ProgressEvent.loaded / ProgressEvent.total * 100));
-        }
-    })
+    return axios.get(`${baseURL}/seller/${sellerId}/orderHistory`)
     .then(res => {
         
         return res.data;
@@ -28,7 +24,7 @@ function add(product, sellerId, setProgress) {
 }
 
 
-function view(sellerId) {
+function viewOrderStatus(sellerId) {
   
     return axios.get(`${baseURL}/seller/${sellerId}/viewProduct`)
     .then(res => {
@@ -41,7 +37,7 @@ function view(sellerId) {
 }
 
 
-function changeQuantity(productId, qtyChange, sellerId) {
+function changeOrderStatus(productId, qtyChange, sellerId) {
     return axios.put(`${baseURL}/seller/${sellerId}/${productId}/changeQty?qty=${qtyChange}`)
     .then(res => {
         return res.data;

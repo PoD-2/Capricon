@@ -47,7 +47,8 @@ export function sellerProducts(state = initialState, action) {
             };
         case sellerProductConstants.VIEW_FAILURE:
             return {
-                ...state
+                ...state,
+                loading: false
             };
         case sellerProductConstants.CHANGE_REQUEST:
             return {
@@ -62,7 +63,8 @@ export function sellerProducts(state = initialState, action) {
             };
         case sellerProductConstants.CHANGE_FAILURE:
             return {
-                ...state
+                ...state,
+                loading: false
             };
         default:
             return state

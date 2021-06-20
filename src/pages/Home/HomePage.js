@@ -47,7 +47,7 @@ function HomePage() {
     }
 
 
-    console.log("cate" + categories);
+    
 
 
 

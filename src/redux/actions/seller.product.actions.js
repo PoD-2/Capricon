@@ -63,8 +63,8 @@ function changeQuantity(productId, changeQty, sellerId) {
 
         sellerProductService.changeQuantity(productId, changeQty, sellerId)
             .then(
-                products => {
-                    dispatch(success(products));
+                response => {
+                    dispatch(success(response.products));
                     dispatch(alertActions.success("Quantity increased successfully"));
                 },
                 error => {

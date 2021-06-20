@@ -11,26 +11,17 @@ export const homeService = {
 async function viewCategory(categories) {
 
 
-    // const request = categories.map(category => {
-    //     return axios.get(`${baseURL}/product/home?category=${category}`);
-    // })
+    const request = categories.map(category => {
+        return axios.get(`${baseURL}/product/home?category=${category}`);
+    })
 
-    // const [firstResponse, secondResponse,thirdResponse] = await Promise.all([
-    //     axios.get(`${baseURL}/product/home?category=${categories[0]}`),
-    //     axios.get(`${baseURL}/product/home?category=${categories[1]}`),
-    //     axios.get(`${baseURL}/product/home?category=${categories[2]}`)
-    //   ]);
-    //         return [firstResponse.data, secondResponse.data, thirdResponse.data];
-
-
-    axios.all([axios.get(`${baseURL}/product/home?category=${categories[0]}`),
-    axios.get(`${baseURL}/product/home?category=${categories[1]}`),
-    axios.get(`${baseURL}/product/home?category=${categories[2]}`)])
+    return axios.all(request)
         .then(axios.spread((firstResponse, secondResponse, thirdResponse) => {
-            console.log(firstResponse.data, secondResponse.data, thirdResponse.data);
             return [firstResponse.data, secondResponse.data, thirdResponse.data];
         }))
-        .catch(error => console.log(error));
+        .catch(error => {
+            return Promise.reject(error.response.data.message);
+        });
 
 
 }
