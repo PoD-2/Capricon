@@ -69,6 +69,7 @@ function ProductResults(props) {
                                     productId={product.productId}
                                     productName={product.productName}
                                     category={product.category}
+                                    images={product.images}
                                     price={product.price}
                                     quantity={product.qty}
                                     color={product.color}

@@ -1,6 +1,5 @@
 import React from 'react';
 import { Row, Col, Image, ButtonGroup, Button } from 'react-bootstrap'
-import product4 from '../../images/product4.jpeg'
 import './CartCard.css';
 import { FaTrash } from "react-icons/fa";
 
@@ -23,7 +22,7 @@ function CartCard(props) {
         <Row className="p-3 mb-4">
             <Col md={3}>
                 <div className="position-relative" style={{ backgroundColor: "limegreen", width: 200, height: 200 }}>
-                    <Image src={product4} width={200} height={200} />
+                    <Image src={props.images.length!==0 && props.images[0].fileUrl} width={200} height={200} />
                     <div
                         className="delete"
                         type="button"

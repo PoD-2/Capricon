@@ -8,7 +8,7 @@ function OrderStatusCard(props) {
         <Row className="p-4 my-4" style={{ borderRadius: 5, backgroundColor: "rgba(112, 112, 112, 0.1)" }}>
             <Col>
                <Row>
-                <Image src={props.image.images.length!==0 && props.image.images[0].fileUrl} className="p-1" style={{ width: 200, borderRadius: 10 }} fluid />
+                <Image src={props.images.length!==0 && props.images[0].fileUrl} className="p-1" style={{ width: 200, borderRadius: 10 }} fluid />
                 <div className="p-3">
                     <h5 style={{ fontSize: 24 }}>{props.productName}</h5>
                     <p className="text-muted text-monospace" style={{ fontSize: 18 }}>Price: ₹{props.price}</p>

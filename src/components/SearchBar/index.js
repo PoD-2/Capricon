@@ -188,6 +188,7 @@ function SearchBar(props) {
                                 <ProductSearch
                                     productName={product.productName}
                                     category={product.category}
+                                    images={product.images}
                                     onClick={handleClick}
                                 />
                             ))}

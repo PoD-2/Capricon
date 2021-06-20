@@ -38,7 +38,7 @@ function SellerOrderStatus() {
                         customerName={orderStatus.user.userName}
                         phoneNumber={orderStatus.user.phoneNumber}
                         address={orderStatus.billingAddress}
-                        image={orderStatus.product}
+                        images={orderStatus.product.images}
                         handleChangeStatus={handleChangeStatus}
                         bookId={orderStatus.bookId}
                         status={orderStatus.status}

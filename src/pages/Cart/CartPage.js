@@ -54,6 +54,7 @@ function CartPage() {
                             removeCartItem={handleRemoveCartItem}
                             quantity={quantity}
                             setQuantity={setQuantity}
+                            images={item.images}
                             />
                         ))
                     )}

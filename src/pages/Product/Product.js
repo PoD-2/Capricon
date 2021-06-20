@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Carousel } from "react-bootstrap";
 import { Row, Col, Button, Container, Spinner } from 'react-bootstrap'
-import product4 from '../../images/shoeImg.jpeg'
 import { HiOutlineMail } from "react-icons/hi"
 import { FaPhoneAlt } from "react-icons/fa"
 import Footer from '../../components/Footer/Footer';
@@ -40,7 +39,7 @@ function Product(props) {
     }, [dispatch, productId]);
 
     const handleCartButton = () => {
-         if(user && user.userId){
+        if (user && user.userId) {
             dispatch(cartActions.add(user.userId, productId, history));
         } else {
             history.push('/login');
@@ -60,31 +59,20 @@ function Product(props) {
                         <Row>
                             <Col md={{ span: 5 }}>
                                 <div className="position-relative mb-4"  >
-                                    <Carousel className="shadow"   >
-                                        <Carousel.Item interval={60000}>
-                                            <img
-                                                className="adImage"
-                                                src={product4}
-                                                alt="First slide"
-                                                style={{ width: '100%', height: 450 }}
-                                            />
-                                        </Carousel.Item>
-                                        <Carousel.Item interval={60000}>
-                                            <img
-                                                className="d-block w-100 adImage"
-                                                src={product4}
-                                                alt="Second slide"
-                                                style={{ width: '100%', height: 450 }}
-                                            />
-                                        </Carousel.Item>
-                                        <Carousel.Item interval={60000}>
-                                            <img
-                                                className="d-block w-100 adImage"
-                                                src={product4}
-                                                alt="Third slide"
-                                                style={{ width: '100%', height: 450 }}
-                                            />
-                                        </Carousel.Item>
+                                    <Carousel className="shadow" interval={null} >
+                                        {product.images && product.images.length !== 0 && (
+                                            product.images.map((item) => (
+                                                <Carousel.Item>
+                                                    <img
+                                                        src={item.fileUrl}
+                                                        className="adImage"
+                                                        alt="First slide"
+                                                        style={{ width: '100%', height: 450 }}
+
+                                                    />
+                                                </Carousel.Item>
+                                            ))
+                                        )}
                                     </Carousel>
                                 </div>
 

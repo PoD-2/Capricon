@@ -57,7 +57,7 @@ function NavBar() {
         <Form className="position-relative d-xl-block d-none px-0">
           <SearchBar
             position="absolute"
-            barLength="25em"
+            barLength="34em"
             top={-30}
             left={0}
           />
