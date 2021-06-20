@@ -28,7 +28,7 @@ export default function RouteWrapper({component: Component, isPrivate, alwaysPub
     
     //if seller is logged in, it will redirect to dashboard when seller tries to access seller login or dashboard
     if(isSeller && signed && sellerSigned){
-         return <Redirect to="/seller/dashboard" />;
+         return <Redirect to="/seller" />;
     }
 
     if(isSellerPrivate && signed && !sellerSigned){

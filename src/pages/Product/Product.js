@@ -40,7 +40,11 @@ function Product(props) {
     }, [dispatch, productId]);
 
     const handleCartButton = () => {
-        dispatch(cartActions.add(user.userId, productId, history));
+         if(user && user.userId){
+            dispatch(cartActions.add(user.userId, productId, history));
+        } else {
+            history.push('/login');
+        }
     }
 
     return (

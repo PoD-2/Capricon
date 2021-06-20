@@ -36,7 +36,12 @@ function HomePage() {
     }, [dispatch]);
 
     const handleCartButton = (productId) => {
-        dispatch(cartActions.add(user.userId, productId, history));
+        if(user && user.userId){
+            dispatch(cartActions.add(user.userId, productId, history));
+        } else {
+            history.push('/login');
+        }
+        
     }
 
     const handleProductClick = (productId) => {

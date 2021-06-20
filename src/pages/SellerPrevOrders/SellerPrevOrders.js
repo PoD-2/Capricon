@@ -61,7 +61,7 @@ function SellerPrevOrders(props) {
                         </tr>
                     </thead>
                     <tbody>
-                    {orders && orders.length !== 0 && (
+                    {orders && orders.length !== 0 ? (
                         orders.map((order) => (
                         <tr>
                             <td>{order.bookId}</td>
@@ -76,6 +76,8 @@ function SellerPrevOrders(props) {
                             ${order.billingAddress.city}-${order.billingAddress.pincode}`}</td>
                         </tr>
                         ))
+                    ) : (
+                        <p>Order status is empty</p>
                     )}
                     </tbody>
                 </Table>

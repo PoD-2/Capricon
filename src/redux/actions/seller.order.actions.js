@@ -4,7 +4,8 @@ import { sellerOrderService } from '../../services';
 
 export const sellerOrderActions = {
     viewOrderHistory,
-    viewOrderStatus
+    viewOrderStatus,
+    changeOrderStatus
    
 };
 
@@ -50,4 +51,29 @@ function viewOrderStatus(sellerId) {
     function request() { return { type: sellerOrderConstants.VIEW_STATUS_REQUEST } }
     function success(orderStatus) { return { type: sellerOrderConstants.VIEW_STATUS_SUCCESS, orderStatus } }
     function failure() { return { type: sellerOrderConstants.VIEW_STATUS_FAILURE } }
+}
+
+
+function changeOrderStatus(bookId, sellerId, changeStatus) {
+    return dispatch => {
+
+        dispatch(request());
+
+        sellerOrderService.changeOrderStatus(bookId,sellerId, changeStatus)
+            .then(
+                response => {
+                    dispatch(success(response));
+                    dispatch(alertActions.success("Delivery Status Changed successfully"));
+                },
+                error => {
+
+                    dispatch(failure(error.toString()));
+                    dispatch(alertActions.error(error.toString()));
+                }
+            );
+    };
+
+    function request() { return { type: sellerOrderConstants.CHANGE_REQUEST } }
+    function success(orderStatus) { return { type: sellerOrderConstants.CHANGE_SUCCESS, orderStatus} }
+    function failure() { return { type: sellerOrderConstants.CHANGE_FAILURE } }
 }

@@ -46,12 +46,13 @@ export function sellerOrders(state = initialState, action) {
             return {
                 ...state,
                 loading: false,
-                products: action.products
+                orderStatus: action.orderStatus
             };
         case sellerOrderConstants.CHANGE_FAILURE:
             return {
                 ...state
             };
+        
         default:
             return state
     }

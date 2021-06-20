@@ -16,7 +16,7 @@ function login(seller, remember, history) {
             .then(
                 seller => { 
                         dispatch(success(seller));
-                        history.push('/seller/dashboard');
+                        history.push('/seller');
                    
                 },
                 error => {
@@ -27,7 +27,7 @@ function login(seller, remember, history) {
     };
 
     function request(user) { return { type: sellerAuthConstants.LOGIN_REQUEST, user } }
-    function success(user) { return { type: sellerAuthConstants.LOGIN_SUCCESS, user } }
+    function success(seller) { return { type: sellerAuthConstants.LOGIN_SUCCESS, seller } }
     function failure(error) { return { type: sellerAuthConstants.LOGIN_FAILURE, error } }
 }
 
@@ -44,7 +44,7 @@ function register(seller, remember, history) {
             .then(
                 seller => { 
                     dispatch(success(seller));
-                    history.push('/seller/dashboard');
+                    history.push('/seller');
 
                 },
                 error => {

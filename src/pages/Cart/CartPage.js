@@ -4,6 +4,7 @@ import CartCard from '../../components/CartCard';
 import NavBar from '../../components/NavBar';
 import { useDispatch, useSelector } from 'react-redux';
 import { cartActions } from '../../redux/actions';
+import Footer from '../../components/Footer/Footer';
 
 function CartPage() {
 
@@ -110,7 +111,7 @@ function CartPage() {
                 </Row>
                 )}
             </Container>
-
+            <Footer />
         </>
     )
 }

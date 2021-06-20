@@ -52,7 +52,7 @@ function SellerProducts() {
             />
             <div>
                 <Row>
-                {products && products.length !== 0 && (
+                {products && products.length !== 0 ? (
                     products.map((item) => (
                         <Col>
                             <SellerProductCard 
@@ -66,6 +66,8 @@ function SellerProducts() {
                             />
                             </Col>
                         ))
+                    ) : (
+                        <p>Order status is empty</p>
                     )}
                 </Row>
             </div>

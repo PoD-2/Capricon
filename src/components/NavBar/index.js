@@ -65,7 +65,6 @@ function NavBar() {
         <Nav className="ml-auto">
           {loggedIn ? (
             <NavDropdown title={user.userName} id="basic-nav-dropdown">
-              <NavDropdown.Item href="#action/3.1">My Profile</NavDropdown.Item>
               <NavDropdown.Item href="/orders">My Orders</NavDropdown.Item>
               <NavDropdown.Item onClick={() => handleLogout()}>Log out</NavDropdown.Item>
               <NavDropdown.Divider />

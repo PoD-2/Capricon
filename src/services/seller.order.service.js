@@ -4,7 +4,8 @@ const baseURL = "http://localhost:8080"
 
 export const sellerOrderService = {
     viewOrderHistory,
-    viewOrderStatus
+    viewOrderStatus,
+    changeOrderStatus
 };
 
 
@@ -35,13 +36,12 @@ function viewOrderStatus(sellerId) {
 
 }
 
-
-// function changeOrderStatus(productId, qtyChange, sellerId) {
-//     return axios.put(`${baseURL}/seller/${sellerId}/${productId}/changeQty?qty=${qtyChange}`)
-//     .then(res => {
-//         return res.data;
-//     })
-//     .catch(err => {
-//         return Promise.reject(err.response.data.message);
-//     })
-// }
+function changeOrderStatus(bookId, sellerId, statusChange) {
+    return axios.put(`${baseURL}/booking/changeStatus?id=${bookId}&sellerId=${sellerId}&status=${statusChange}`)
+    .then(res => {
+        return res.data;
+    })
+    .catch(err => {
+        return Promise.reject(err.response.data.message);
+    })
+}

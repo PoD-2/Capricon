@@ -16,7 +16,9 @@ function SellerOrderStatus() {
         dispatch(sellerOrderActions.viewOrderStatus(sellerId));
     }, [dispatch, sellerId]);
 
-
+    const handleChangeStatus = (bookId, changeStatus) => {
+        dispatch(sellerOrderActions.changeOrderStatus(bookId, sellerId, changeStatus));
+    }
 
 
     return (
@@ -36,7 +38,10 @@ function SellerOrderStatus() {
                         customerName={orderStatus.user.userName}
                         phoneNumber={orderStatus.user.phoneNumber}
                         address={orderStatus.billingAddress}
-                        image={orderStatus.product.images[0].fileUrl}
+                        image={orderStatus.product}
+                        handleChangeStatus={handleChangeStatus}
+                        bookId={orderStatus.bookId}
+                        status={orderStatus.status}
                     />
                 )) 
             ) : (
