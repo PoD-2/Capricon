@@ -4,7 +4,8 @@ const baseURL = "http://localhost:8080"
 
 export const sellerProductService = {
     add,
-    view
+    view,
+    changeQuantity
 };
 
 
@@ -39,3 +40,13 @@ function view(sellerId) {
 
 }
 
+
+function changeQuantity(productId, qtyChange, sellerId) {
+    return axios.get(`${baseURL}/seller/${sellerId}/${productId}/changeQty?qty=${qtyChange}`)
+    .then(res => {
+        return res.data;
+    })
+    .catch(err => {
+        return Promise.reject(err.response.data.message);
+    })
+}

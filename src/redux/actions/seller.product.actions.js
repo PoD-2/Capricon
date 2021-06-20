@@ -4,7 +4,8 @@ import { sellerProductService } from '../../services';
 
 export const sellerProductActions = {
     add,
-    view
+    view,
+    changeQuantity
 };
 
 function add(data, sellerId, setProgress) {
@@ -55,3 +56,26 @@ function view(sellerId) {
 }
 
 
+function changeQuantity(productId, changeQty, sellerId) {
+    return dispatch => {
+
+        dispatch(request());
+
+        sellerProductService.changeQuantity(productId, changeQty, sellerId)
+            .then(
+                products => {
+                    dispatch(success(products));
+                    dispatch(alertActions.success("Quantity increased successfully"));
+                },
+                error => {
+
+                    dispatch(failure(error.toString()));
+                    dispatch(alertActions.error(error.message.toString()));
+                }
+            );
+    };
+
+    function request() { return { type: sellerProductConstants.CHANGE_REQUEST } }
+    function success(products) { return { type: sellerProductConstants.CHANGE_SUCCESS, products } }
+    function failure(error) { return { type: sellerProductConstants.CHANGE_FAILURE, error } }
+}

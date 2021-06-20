@@ -65,14 +65,16 @@ function HomePage() {
                             categories.map((category) => {
                                return( 
                                    <>
-                                    <h3 className="mt-5 mb-4" style={{ fontFamily: "Lato-Regular", fontSize: 45 }}>{category[0].category}</h3>
+                                    <h3 className="mt-5 mb-4"  key={category[0].productId} style={{ fontFamily: "Lato-Regular", fontSize: 45 }}>{category[0].category}</h3>
                                     <Row>
                                         {category && category.length !== 0 && (
                                             category.map((item) => {
                                                 return (
-                                                    <Col>
+                                                    <Col key={item.productId}>
                                                         <div className="d-flex justify-content-left " style={{ height: 350 }}>
+                                                        {console.log(item.productName)}
                                                             <ProductCard
+                                                                key={item.productId}
                                                                 productId={item.productId}
                                                                 productName={item.productName}
                                                                 category={item.category}

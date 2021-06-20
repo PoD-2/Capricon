@@ -12,7 +12,8 @@ export const formValidation = {
     formatCvc,
     accountNumberValidation,
     cvcValidation,
-    expiryValidation
+    expiryValidation,
+    formatQuantity
 };
 
 
@@ -143,3 +144,9 @@ function expiryValidation(submitted, value){
      return true
  }
 }
+
+function formatQuantity(value) {
+  const clearValue = clearNumber(value);
+  return clearValue.slice(0, 4);
+}
+

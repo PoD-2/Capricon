@@ -10,7 +10,43 @@ function SellerProducts() {
     const [showModal, setShowModel] = useState(false);
     const dispatch = useDispatch();
     const sellerId = useSelector(state => state.sellerAuth.seller.sellerId);
-    const products = useSelector(state => state.sellerProducts.products);
+    // const products = useSelector(state => state.sellerProducts.products);
+   
+
+    const products = [
+        {
+            "productId": 11,
+            "productName": "Superfly",
+            "category": "shoe",
+            "color": "blue",
+            "price": 3000,
+            "qty": 4,
+            "descr": "Shoe",
+            "images": [
+                {
+                    "imgId": 1,
+                    "filename": "1.jpeg",
+                    "fileUrl": "http://localhost:8080/files1.jpeg",
+                    "fileType": "image/jpeg",
+                    "size": 77621
+                },
+                {
+                    "imgId": 2,
+                    "filename": "2.jpeg",
+                    "fileUrl": "http://localhost:8080/files2.jpeg",
+                    "fileType": "image/jpeg",
+                    "size": 74103
+                },
+                {
+                    "imgId": 3,
+                    "filename": "3.jpeg",
+                    "fileUrl": "http://localhost:8080/files3.jpeg",
+                    "fileType": "image/jpeg",
+                    "size": 124848
+                }
+            ]
+        }
+    ];
 
     useEffect(() => {
         dispatch(sellerProductActions.view(sellerId));
@@ -19,6 +55,12 @@ function SellerProducts() {
 
     const closeModal = () => {
         setShowModel(false);
+    }
+
+  
+
+    const handleQtyChange = (productId, qtyChangle) => {
+       dispatch(sellerProductActions.changeQuantity(productId, qtyChangle, sellerId))
     }
 
     return (
@@ -49,6 +91,7 @@ function SellerProducts() {
                             price={item.price}
                             quantity={item.qty}
                             images={item.images}
+                            handleQtyChange={handleQtyChange}
                             />
                             </Col>
                         ))

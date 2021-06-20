@@ -46,7 +46,24 @@ export function sellerProducts(state = initialState, action) {
                 products: action.products
             };
         case sellerProductConstants.VIEW_FAILURE:
-            return {};
+            return {
+                ...state
+            };
+        case sellerProductConstants.CHANGE_REQUEST:
+            return {
+                ...state,
+                loading: true
+            };
+        case sellerProductConstants.CHANGE_SUCCESS:
+            return {
+                ...state,
+                loading: false,
+                products: action.products
+            };
+        case sellerProductConstants.CHANGE_FAILURE:
+            return {
+                ...state
+            };
         default:
             return state
     }

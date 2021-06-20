@@ -25,7 +25,7 @@ function CartPage() {
         cartItems && cartItems.length !== 0 && (
         setTotalPrice(findTotalCartPrice(cartItems))
         )
-    }, [cartItems]);
+    }, [cartItems, quantity]);
 
     const handleRemoveCartItem = (productId) => {
         dispatch(cartActions.remove(userId, productId));
