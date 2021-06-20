@@ -4,8 +4,7 @@ const baseURL = "http://localhost:8080"
 
 export const sellerOrderService = {
     viewOrderHistory,
-    viewOrderStatus,
-    changeOrderStatus
+    viewOrderStatus
 };
 
 
@@ -26,7 +25,7 @@ function viewOrderHistory(sellerId) {
 
 function viewOrderStatus(sellerId) {
   
-    return axios.get(`${baseURL}/seller/${sellerId}/viewProduct`)
+    return axios.get(`${baseURL}/seller/${sellerId}/orderStatus`)
     .then(res => {
         return res.data;
     })
@@ -37,12 +36,12 @@ function viewOrderStatus(sellerId) {
 }
 
 
-function changeOrderStatus(productId, qtyChange, sellerId) {
-    return axios.put(`${baseURL}/seller/${sellerId}/${productId}/changeQty?qty=${qtyChange}`)
-    .then(res => {
-        return res.data;
-    })
-    .catch(err => {
-        return Promise.reject(err.response.data.message);
-    })
-}
+// function changeOrderStatus(productId, qtyChange, sellerId) {
+//     return axios.put(`${baseURL}/seller/${sellerId}/${productId}/changeQty?qty=${qtyChange}`)
+//     .then(res => {
+//         return res.data;
+//     })
+//     .catch(err => {
+//         return Promise.reject(err.response.data.message);
+//     })
+// }

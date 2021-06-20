@@ -1,24 +1,24 @@
 import React from 'react'
 import { Image, Form, Row, Col } from 'react-bootstrap';
-import ProductPic from '../../images/shoeImg.jpeg'
 
-function OrderStatusCard() {
+function OrderStatusCard(props) {
     return (
         <Row className="p-4 my-4" style={{ borderRadius: 5, backgroundColor: "rgba(112, 112, 112, 0.1)" }}>
             <Col>
                <Row>
-                <Image src={ProductPic} className="p-1" style={{ width: 200, borderRadius: 10 }} fluid />
+                <Image src={props.image} className="p-1" style={{ width: 200, borderRadius: 10 }} fluid />
                 <div className="p-3">
-                    <h5 style={{ fontSize: 24 }}>Jordan Delta 2</h5>
-                    <p className="text-muted text-monospace" style={{ fontSize: 18 }}>Nike</p>
+                    <h5 style={{ fontSize: 24 }}>{props.productName}</h5>
+                    <p className="text-muted text-monospace" style={{ fontSize: 18 }}>Price: ₹{props.price}</p>
                 </div>
                 </Row>
             </Col>
             <Col>
                 <h5 className="" style={{ fontSize: 24 }}>Buyer Details:</h5>
-                <p className="text-muted text-monospace my-0" style={{ fontSize: 18 }}>Zaman</p>
-                <p className="text-muted text-monospace my-0" style={{ fontSize: 18 }}>9501217625</p>
-                <p className="text-muted text-monospace" style={{ fontSize: 18 }}>door no 4, good street, velachery, chennai</p>
+                <p className="text-muted text-monospace my-0" style={{ fontSize: 18 }}>{props.customerName}</p>
+                <p className="text-muted text-monospace my-0" style={{ fontSize: 18 }}>{props.phoneNumber}</p>
+                <p className="text-muted text-monospace" style={{ fontSize: 18 }}>{`${props.address.line}, 
+                ${props.address.city}-${props.address.pincode}`}</p>
                 <Row className="ml-1">
                     <span className="mr-3" style={{ fontSize: 24 }}>Order Status:</span>
                     <Form.Group controlId="formGridState">

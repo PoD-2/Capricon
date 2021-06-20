@@ -20,6 +20,23 @@ export function sellerOrders(state = initialState, action) {
                 ...state,
                 loading: false
             };
+
+        case sellerOrderConstants.VIEW_STATUS_REQUEST:
+            return {
+                ...state,
+                loading: true
+            };
+        case sellerOrderConstants.VIEW_STATUS_SUCCESS:
+            return {
+                ...state,
+                loading: false,
+                orderStatus: action.orderStatus
+            };
+        case sellerOrderConstants.VIEW_STATUS_FAILURE:
+            return {
+                ...state,
+                loading: false
+            };
         case sellerOrderConstants.CHANGE_REQUEST:
             return {
                 ...state,
