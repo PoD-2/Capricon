@@ -47,7 +47,7 @@ function PriceCard(props) {
 
                 </Card.Body>
                 {props.checkoutButton && (
-                    <Card.Footer>
+                <Card.Footer>
                     <Button onClick={() => props.handleBuy()} size="lg" block variant="primary">Check out</Button>
                 </Card.Footer>
                 )}
