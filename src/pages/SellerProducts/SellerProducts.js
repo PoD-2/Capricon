@@ -5,6 +5,7 @@ import ProductUpload from '../../components/ProductUpload';
 import { sellerProductActions } from '../../redux/actions/seller.product.actions';
 import { useDispatch, useSelector } from 'react-redux';
 import LoadingScreen from '../../components/LoadingScreen';
+import MessageCard from '../../components/MessageCard';
 
 function SellerProducts() {
 
@@ -67,7 +68,7 @@ function SellerProducts() {
                             </Col>
                         ))
                     ) : (
-                        <p>Order status is empty</p>
+                        <MessageCard message="No products" />
                     )}
                 </Row>
             </div>

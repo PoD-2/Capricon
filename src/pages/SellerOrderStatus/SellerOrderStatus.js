@@ -3,6 +3,7 @@ import OrderStatusCard from '../../components/OrderStatusCard';
 import { sellerOrderActions } from '../../redux/actions';
 import { useDispatch, useSelector } from 'react-redux';
 import LoadingScreen from '../../components/LoadingScreen';
+import MessageCard from '../../components/MessageCard';
 
 function SellerOrderStatus() {
 
@@ -45,7 +46,7 @@ function SellerOrderStatus() {
                     />
                 )) 
             ) : (
-                <p>Order status is empty</p>
+                <MessageCard message="Order status is empty" />
             )}
             </div>
         </div>

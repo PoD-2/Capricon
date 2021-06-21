@@ -39,7 +39,7 @@ function Routes() {
         <Route path="/seller/login" component={SellerLogin} isSeller/>
         <Route path="/seller/register" component={SellerRegister} isSeller/>
         <Route path="/seller" component={SellerPage} isSellerPrivate/>
-        <Route component={ErrorPage} />
+        <Route component={ErrorPage} alwaysPublic />
         </Switch>
         </BrowserRouter>
     )

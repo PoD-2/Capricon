@@ -5,6 +5,7 @@ import { Row, Col } from 'react-bootstrap';
 import { sellerOrderActions } from '../../redux/actions/seller.order.actions';
 import { useDispatch, useSelector } from 'react-redux';
 import LoadingScreen from '../../components/LoadingScreen';
+import MessageCard from '../../components/MessageCard';
 
 function SellerPrevOrders(props) {
 
@@ -47,6 +48,8 @@ function SellerPrevOrders(props) {
 
             <div>
                 <Table striped bordered hover variant={props.isdarkTheme ? "dark" : ""} responsive>
+                {orders && orders.length !== 0 ? (
+                    <>
                     <thead>
                         <tr>
                             <th>Book Id</th>
@@ -60,9 +63,9 @@ function SellerPrevOrders(props) {
                             <th>Biling Address</th>
                         </tr>
                     </thead>
+                    
                     <tbody>
-                    {orders && orders.length !== 0 ? (
-                        orders.map((order) => (
+                        {orders.map((order) => (
                         <tr>
                             <td>{order.bookId}</td>
                             <td>{order.user.userName}</td>
@@ -75,11 +78,12 @@ function SellerPrevOrders(props) {
                             <td>{`${order.billingAddress.line},
                             ${order.billingAddress.city}-${order.billingAddress.pincode}`}</td>
                         </tr>
-                        ))
-                    ) : (
-                        <p>Order status is empty</p>
-                    )}
+                        ))}  
                     </tbody>
+                    </>
+                    ) : (
+                    <MessageCard message="No orders" />
+                    )}
                 </Table>
             </div>
         </div>

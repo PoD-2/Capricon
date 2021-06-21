@@ -5,3 +5,6 @@ export * from './cart.service';
 export * from './seller.product.service';
 export * from './home.service';
 export * from './seller.order.service';
+export * from './wishlist.service';
+export * from './checkout.service';
+export * from './user.order.service';

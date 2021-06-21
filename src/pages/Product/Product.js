@@ -46,6 +46,13 @@ function Product(props) {
         }
     }
 
+    function handleBuy() {
+        history.push({
+            pathname: '/checkout',
+              state: {productId: productId, qty: 1, amount: product.price} 
+          })
+    }
+
     return (
         <>
             <NavBar />
@@ -80,17 +87,14 @@ function Product(props) {
                             <Col md={{ span: 6, offset: 1 }}>
                                 <p style={{ fontSize: 40, fontFamily: "Lato-Bold" }}>{product.productName}</p>
                                 <div style={{ fontSize: 15 }}>
-                                    <p>Category: {product.category}</p>
-                                    <p>Color: {product.color}</p>
-                                    <p>Features: {product.descr}</p>
-                                    <p>3 GB RAM | 32 GB ROM | Expandable Upto 200</p>
-                                    <p>13.21 cm (5.2 inch) Full HD Display</p>
-                                    <p>23MP Rear Camera | 5MP Front Camera</p>
+                                    <p><span className="fw-bold">Features: </span>{product.descr}</p>
+                                    <p><span className="fw-bold">Category: </span>{product.category}</p>
+                                    <p><span className="fw-bold">Color: </span>{product.color}</p>
                                 </div>
                                 <p style={{ color: "limegreen", fontSize: 25 }}>At ₹{product.price}</p>
                                 <p style={{ color: "#0165fc", fontSize: 20 }}>Only {product.qty} left</p>
                                 <div className="d-flex">
-                                    <Button variant="secondary" className="mx-2 mt-2" size="lg" block>Buy Now</Button>
+                                    <Button variant="secondary" className="mx-2 mt-2" size="lg" block onClick={() => handleBuy()}>Buy Now</Button>
                                     <Button onClick={() => handleCartButton()} variant="outline-dark" className="mx-2 mt-2" size="lg" block>Add to cart</Button>
                                 </div>
                             </Col>

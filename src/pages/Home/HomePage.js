@@ -9,6 +9,7 @@ import { homeService } from '../../services';
 import { alertActions, cartActions } from '../../redux/actions';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from "react-router-dom";
+import LoadingScreen from '../../components/LoadingScreen';
 
 function HomePage() {
 
@@ -61,7 +62,7 @@ function HomePage() {
         <div>
             <NavBar />
             {isLoading ? (
-                <p>loading</p>
+                <LoadingScreen />
             ) : (
                 <div>
                     <AdCarousel />

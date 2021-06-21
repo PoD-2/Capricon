@@ -6,6 +6,8 @@ import { sellerAuth } from './seller.auth.reducer';
 import { userCart } from './cart.reducer';
 import { sellerProducts } from './seller.products.reducer';
 import { sellerOrders } from './seller.order.reducer';
+import { userWishlist } from './wishlist.reducer';
+import { userOrders } from './user.order.reducer';
 
 const rootReducer = combineReducers({
     userAuth,
@@ -13,7 +15,9 @@ const rootReducer = combineReducers({
     alert,
     userCart,
     sellerProducts,
-    sellerOrders
+    sellerOrders,
+    userWishlist,
+    userOrders
 });
 
 export default rootReducer;

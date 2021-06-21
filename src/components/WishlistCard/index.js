@@ -40,7 +40,7 @@ function WishlistCard(props) {
                         <div
                             className="delete"
                             type="button"
-                            onClick={() => props.handleImageDelete()}
+                            onClick={() => props.handleImageDelete(props.productId)}
                         >
                         <FaTrash size={22} color="white" />
                         </div>
@@ -48,10 +48,10 @@ function WishlistCard(props) {
                     <Col md={alignstyle.textContainerAlignment} className={alignstyle.textContainerClassName}>
                         <p className={alignstyle.productNameClassName}>{props.productName}</p>
                         <p className={alignstyle.companyNameClassName} style={{ fontSize: 28 }}>{props.productCompany}</p>
-                        <p className={alignstyle.priceClassName} style={{ fontSize: 34 }}>At {props.price}</p>
+                        <p className={alignstyle.priceClassName} style={{ fontSize: 34 }}>At ₹{props.price}</p>
                         <div className="d-flex">
-                        <Button variant="secondary" className="mx-2 mt-2" size="lg" block>Buy Now</Button>
-                        <Button variant="outline-dark" className="mx-2 mt-2" size="lg" block>Add to cart</Button>
+                        <Button variant="secondary" className="mx-2 mt-2" size="lg" block onClick={() => props.handleBuy(props.productId, props.price)}>Buy Now</Button>
+                        <Button variant="outline-dark" className="mx-2 mt-2" size="lg" block onClick={() => props.handleCartButton(props.productId)}>Add to cart</Button>
                         </div>
                     </Col>
                 </Row>

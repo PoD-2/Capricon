@@ -33,6 +33,7 @@ function login(user, remember) {
 function logout() {
     // remove user from local storage to log user out
     localStorage.removeItem('user');
+    sessionStorage.removeItem('user');
 }
 
 

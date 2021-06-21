@@ -1,10 +1,13 @@
 import React, {useEffect, useState} from 'react'
-import { Row, Container, Col, Card, Button } from 'react-bootstrap'
+import { Row, Container, Col } from 'react-bootstrap'
 import CartCard from '../../components/CartCard';
 import NavBar from '../../components/NavBar';
 import { useDispatch, useSelector } from 'react-redux';
 import { cartActions } from '../../redux/actions';
+import MessageCard from '../../components/MessageCard';
 import Footer from '../../components/Footer/Footer';
+import PriceCard from '../../components/PriceCard';
+import { useHistory } from "react-router-dom";
 
 function CartPage() {
 
@@ -13,6 +16,9 @@ function CartPage() {
     const userId = useSelector(state => state.userAuth.user.userId);
     const [totalPrice, setTotalPrice] = useState(0);
     const [quantity, setQuantity] = useState(1);
+    const [productId, setProductId] = useState("");
+    const [amount, setAmount] = useState("");
+    let history = useHistory();
 
 
     useEffect(() => {
@@ -32,6 +38,18 @@ function CartPage() {
         dispatch(cartActions.remove(userId, productId));
     }
 
+    function handleBuy() {
+        history.push({
+            pathname: '/checkout',
+              state: {productId: productId, qty: 1, amount: amount} 
+          })
+    }
+
+        if( cartItems && cartItems.length !== 0) {
+            setProductId(cartItems[0].productId);
+            setAmount(cartItems[0].price);
+        }
+
 
     return (
         <>
@@ -39,7 +57,7 @@ function CartPage() {
             <Container>
                 <p className="mb-5 display-4">Your Cart</p>
                 {cartItems && cartItems.length === 0 ? (
-                    <p className="mt-5 text-muted text-monospace" style={{fontSize: 32}}>Your cart is Empty</p>
+                   <MessageCard message="Your cart is Empty" />
                 ) : (
                 <Row>
                     <Col lg={8}>
@@ -61,52 +79,11 @@ function CartPage() {
                     </Col>
                     <Col lg={4}>
                     {cartItems && (
-                            <Card className="shadow-sm">
-                                <Card.Header as="h5">Price details</Card.Header>
-                                <Card.Body>
-                                <Row>
-                                   <Col className="text-left">
-                                   <Card.Text>
-                                        Price
-                                    </Card.Text>
-                                   </Col>
-                                   <Col className="text-right">
-                                   <Card.Text>
-                                    ₹{totalPrice}
-                                    </Card.Text>
-                                   </Col>
-                                   </Row>
-                                   <Row>
-                                   <Col className="text-left">
-                                   <Card.Text>
-                                        Delivery Charges
-                                    </Card.Text>
-                                   </Col>
-                                   <Col className="text-right">
-                                   <Card.Text>
-                                    ₹80
-                                    </Card.Text>
-                                   </Col>
-                                   </Row>
-                                   <span className="LineSeperator my-2" />
-                                   <Row>
-                                   <Col className="text-left font-weight-bold">
-                                   <Card.Text>
-                                        Total Amount
-                                    </Card.Text>
-                                   </Col>
-                                   <Col className="text-right font-weight-bold">
-                                   <Card.Text>
-                                    ₹{totalPrice + 80}
-                                    </Card.Text>
-                                   </Col>
-                                   </Row>
-                                    
-                                </Card.Body>
-                                <Card.Footer>
-                                <Button href="/checkout" size="lg" block variant="primary">Check out</Button>
-                                </Card.Footer>
-                            </Card>
+                           <PriceCard 
+                               totalPrice={totalPrice}
+                               checkoutButton={true}
+                               handleBuy={handleBuy}
+                           />
                             )}
                     </Col>
                 </Row>
