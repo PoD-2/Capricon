@@ -8,11 +8,24 @@ function ResultCard(props) {
     const [isHover, setIsHover] = useState(false);
     const [isClicked, setIsClicked] = useState(false);
 
+    const handleClick = () => {
+        
+        setIsClicked(!isClicked);
+        if(isClicked){
+            props.handleWishlistAdd(props.productId);
+        } else {
+            props.handleWishlistRemove(props.productId);
+        }
+
+
+    }
+
+  
     return (
         <Row className="p-3 mb-4">
             <Col md={{ span: 3, offset: 1 }}>
                 <div onMouseEnter={() => setIsHover(true)} onMouseLeave={()=>setIsHover(false)} 
-                onClick={()=>setIsClicked(!isClicked)} className="position-relative" style={{ backgroundColor: "limegreen", width: 200, height: 200 }}>
+                onClick={()=>handleClick()} className="position-relative" style={{ backgroundColor: "limegreen", width: 200, height: 200 }}>
                     <Image src={props.images.length!==0 && props.images[0].fileUrl} width={200} height={200} />
                     {isClicked && <BsHeartFill size={30} color="#ff007f" className="position-absolute" style={{ top: 10, right: 10, zIndex: 5 }} />}
                     {isHover && !isClicked &&

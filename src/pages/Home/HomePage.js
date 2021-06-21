@@ -22,7 +22,7 @@ function HomePage() {
 
     useEffect(() => {
         setIsLoading(true);
-        homeService.viewCategory(["cosmetics", "fashion", "home appliances"])
+        homeService.viewCategory(["cosmetics", "fashion", "home appliances", "electronics"])
             .then(
                 categories => {
                     setCategories(categories)
@@ -78,7 +78,7 @@ function HomePage() {
                                                 return (
                                                     <Col key={item.productId}>
                                                         <div className="d-flex justify-content-left " style={{ height: 350 }}>
-                                                        {console.log(item.productName)}
+        
                                                             <ProductCard
                                                                 key={item.productId}
                                                                 productId={item.productId}

@@ -4,8 +4,8 @@ import Footer from '../../components/Footer/Footer';
 import NavBar from '../../components/NavBar';
 import { Container, Spinner } from 'react-bootstrap';
 import { searchBarServices } from "../../services/searchBar.service";
-import { alertActions } from '../../redux/actions';
-import { useDispatch } from 'react-redux';
+import { alertActions, wishlistActions } from '../../redux/actions';
+import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from "react-router-dom";
 
 function ProductResults(props) {
@@ -14,6 +14,7 @@ function ProductResults(props) {
     const [products, setProducts] = useState([]);
     const [noProducts, setNoProducts] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
+    const user = useSelector(state => state.userAuth.user);
     const dispatch = useDispatch();
     let history = useHistory();
     
@@ -45,6 +46,14 @@ function ProductResults(props) {
           })
     }
 
+    const handleWishlistAdd = (productId) => {
+        dispatch(wishlistActions.add(user.userId, productId));
+    }
+
+    function handleWishlistRemove(productId) {
+        dispatch(wishlistActions.remove(user.userId, productId));
+    }
+
 
 
     return (
@@ -74,6 +83,8 @@ function ProductResults(props) {
                                     quantity={product.qty}
                                     color={product.color}
                                     onClick={handleClick}
+                                    handleWishlistAdd={handleWishlistAdd}
+                                    handleWishlistRemove={handleWishlistRemove}
                                 />
                             ))}
                         </>

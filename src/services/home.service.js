@@ -16,8 +16,8 @@ async function viewCategory(categories) {
     })
 
     return axios.all(request)
-        .then(axios.spread((firstResponse, secondResponse, thirdResponse) => {
-            return [firstResponse.data, secondResponse.data, thirdResponse.data];
+        .then(axios.spread((firstResponse, secondResponse, thirdResponse, forthResponse) => {
+            return [firstResponse.data, secondResponse.data, thirdResponse.data, forthResponse.data];
         }))
         .catch(error => {
             return Promise.reject(error.response.data.message);
