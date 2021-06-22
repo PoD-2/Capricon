@@ -10,13 +10,8 @@ function ResultCard(props) {
 
     const handleClick = () => {
         
-        setIsClicked(!isClicked);
-        if(isClicked){
-            props.handleWishlistAdd(props.productId);
-        } else {
-            props.handleWishlistRemove(props.productId);
-        }
-
+        setIsClicked(true);
+        props.handleWishlistAdd(props.productId);
 
     }
 

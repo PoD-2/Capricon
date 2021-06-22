@@ -50,11 +50,6 @@ function ProductResults(props) {
         dispatch(wishlistActions.add(user.userId, productId));
     }
 
-    function handleWishlistRemove(productId) {
-        dispatch(wishlistActions.remove(user.userId, productId));
-    }
-
-
 
     return (
         <>
@@ -84,7 +79,7 @@ function ProductResults(props) {
                                     color={product.color}
                                     onClick={handleClick}
                                     handleWishlistAdd={handleWishlistAdd}
-                                    handleWishlistRemove={handleWishlistRemove}
+                                
                                 />
                             ))}
                         </>
