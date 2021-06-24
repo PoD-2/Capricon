@@ -20,6 +20,9 @@ function UserOrder() {
     },  [dispatch, userId]);
 
 
+    orders && orders.length === 0 && console.log("lol" + orders);
+
+
     return (
         <>
         <NavBar />

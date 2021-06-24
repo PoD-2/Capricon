@@ -133,14 +133,14 @@ function checkAllValidity() {
                   type="text"
                   name="cvc"
                   max={3}
-                  placeholder="CVC"
+                  placeholder="CVV"
                   className={'form-control' + (!validateCvc() && ' is-invalid')}
                   value={cvc}
                   onChange={(e) => handleCVCChange(e.target.value)}
                   onFocus={handleInputFocus}
                 />
                  {!validateCvc() &&
-                        <div className="invalid-feedback">Enter valid cvc</div>
+                        <div className="invalid-feedback">Enter valid cvv</div>
                   }
 
               </Form.Group>
